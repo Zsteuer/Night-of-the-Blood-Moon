@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainPlayerController : MonoBehaviour
 {
     public float speed;
+    public float jumpSpeed;
     private Rigidbody2D myRigidBody; 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,12 @@ public class MainPlayerController : MonoBehaviour
             //move right
             movement.x = speed;
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            //jump
+            movement.y = jumpSpeed;
+        }
+
 
         myRigidBody.velocity = movement;
     }
