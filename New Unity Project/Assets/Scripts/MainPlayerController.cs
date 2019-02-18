@@ -26,6 +26,8 @@ public class MainPlayerController : MonoBehaviour
             //move right
             movement.x = speed;
         }
-        
+
+        myRigidBody.velocity = movement;
     }
+    
 }
