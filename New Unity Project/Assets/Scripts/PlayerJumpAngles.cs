@@ -88,10 +88,18 @@ public class PlayerJumpAngles : MonoBehaviour
         if (!Physics2D.Linecast(transform.position, tagGround.position, excludePlayer))
         {
             spriteRenderer.sprite = spriteUp;
-         //   if (rightSpritesCounter >= 0)
-         //   {
-         //       spriteRenderer.flipX = true;
-        //    }
+            //   if (rightSpritesCounter >= 0)
+            //   {
+            //       spriteRenderer.flipX = true;
+            //    }
+            if (vel.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (vel.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
             rightSpritesCounter = -1;
             leftSpritesCounter = -1;
         } 
