@@ -37,22 +37,25 @@ public class MainPlayerController : MonoBehaviour
     void Move()
     {
         Vector2 movement = Vector2.zero;
-        myAnimator.speed = 0;
+        myAnimator.SetFloat("Speed", 0); 
         if (Input.GetKey(KeyCode.A))
         {
             //move left
             movement.x = -speed;
-            
+            myAnimator.SetFloat("Speed", speed);
+            mySpriteRenderer.flipX = true;
+
         }
         if (Input.GetKey(KeyCode.D))
         {
             //move right
             movement.x = speed;
-             
+            myAnimator.SetFloat("Speed", speed);
+            mySpriteRenderer.flipX = false;
+
         }
         myRigidBody.velocity = movement;
-        myAnimator.speed = speed; 
-    }
+        }
 
     void SwordAttack()
     {
