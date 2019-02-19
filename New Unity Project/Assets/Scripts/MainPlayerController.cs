@@ -7,17 +7,18 @@ public class MainPlayerController : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public float isGroundedDistance;
+    public Transform tagGround;
+    public Animator myAnimator;
     public SpriteRenderer mySpriteRenderer;
     public LayerMask excludePlayer; 
     private Rigidbody2D myRigidBody;
-    Transform tagGround;
 
-    // Start is called before the first frame update
+       // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
-
+        myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -33,17 +34,21 @@ public class MainPlayerController : MonoBehaviour
     void Move()
     {
         Vector2 movement = Vector2.zero;
+        myAnimator.speed = 0;
         if (Input.GetKey(KeyCode.A))
         {
             //move left
             movement.x = -speed;
+            
         }
         if (Input.GetKey(KeyCode.D))
         {
             //move right
             movement.x = speed;
+             
         }
         myRigidBody.velocity = movement;
+        myAnimator.speed = speed; 
     }
 
     void SwordAttack()
@@ -65,8 +70,8 @@ public class MainPlayerController : MonoBehaviour
     public bool isGrounded()
     {
         Vector2 origin = transform.position;
-        Vector2 direction = Vector2.down;
-        if (Physics2D.Linecast(transform.position, tagGround.position, excludePlayer))
+                      
+        if (Physics2D.Linecast(origin, tagGround.position, excludePlayer))
         {
             return true;
         } else
