@@ -11,12 +11,14 @@ public class MainPlayerController : MonoBehaviour
     public LayerMask excludePlayer; 
     private Rigidbody2D myRigidBody;
     Transform tagGround;
+    private float jumpHeight;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
+        jumpHeight = (jumpSpeed * jumpSpeed) / myRigidBody.gravityScale;
 
     }
 
