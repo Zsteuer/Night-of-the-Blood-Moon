@@ -28,9 +28,11 @@ public class MainPlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        if (isGrounded())
+        FallCheck();
+        if (IsGrounded())
         {
             Jump();
+            myAnimator.SetBool("IsJumping", false);
         }
     }
 
@@ -61,6 +63,18 @@ public class MainPlayerController : MonoBehaviour
     {
 
     }
+        
+    void FallCheck()
+    {
+        if (myRigidBody.velocity.y < -0.1)
+        {
+            myAnimator.SetBool("IsFalling" , true);
+        }
+        else
+        {
+            myAnimator.SetBool("IsFalling" , false);
+        }
+    }
 
     void Jump()
     {
@@ -69,11 +83,12 @@ public class MainPlayerController : MonoBehaviour
         {
             //jump
             jumpMovement.y = jumpSpeed;
+            myAnimator.SetBool("IsJumping", true); 
         }
         myRigidBody.velocity = jumpMovement;
     }
 
-    public bool isGrounded()
+    public bool IsGrounded()
     {
         Vector2 origin = transform.position;
                       

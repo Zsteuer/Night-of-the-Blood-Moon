@@ -36,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
         {
             movement.x = -speed;
         }
-        if (isGrounded() && (Math.Abs(playerPosition.position.x - transform.position.x) < 5) && playerPosition.position.y > transform.position.y && !GameObject.Find("Player").GetComponent<MainPlayerController>().isGrounded()) 
+        if (isGrounded() && (Math.Abs(playerPosition.position.x - transform.position.x) < 5) && playerPosition.position.y > transform.position.y && !GameObject.Find("Player").GetComponent<MainPlayerController>().IsGrounded()) 
         {
             movement.y = jumpSpeed;
         }
