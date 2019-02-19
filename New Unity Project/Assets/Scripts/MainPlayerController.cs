@@ -10,7 +10,7 @@ public class MainPlayerController : MonoBehaviour
     public Transform tagGround;
     public Animator myAnimator;
     public SpriteRenderer mySpriteRenderer;
-    public LayerMask excludePlayer; 
+    public LayerMask excludePlayer;
     private Rigidbody2D myRigidBody;
     private float jumpHeight;
 
@@ -61,7 +61,27 @@ public class MainPlayerController : MonoBehaviour
 
     void SwordAttack()
     {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            if (mySpriteRenderer.flipX == true)
+            {
+                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left);
+                if (swordHit.collider != null)
+                {
 
+                }
+
+            }
+            else if (mySpriteRenderer.flipX == false)
+            {
+                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right);
+                if (swordHit.collider != null)
+                {
+
+                }
+            }
+        }
+    
     }
         
     void FallCheck()
