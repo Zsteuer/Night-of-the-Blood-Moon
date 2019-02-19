@@ -7,6 +7,7 @@ public class MainPlayerController : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public float isGroundedDistance;
+    public SpriteRenderer mySpriteRenderer;
     public LayerMask excludePlayer; 
     private Rigidbody2D myRigidBody;
     Transform tagGround;
@@ -28,6 +29,7 @@ public class MainPlayerController : MonoBehaviour
             Jump();
         }
     }
+
     void Move()
     {
         Vector2 movement = Vector2.zero;
@@ -44,6 +46,11 @@ public class MainPlayerController : MonoBehaviour
         myRigidBody.velocity = movement;
     }
 
+    void SwordAttack()
+    {
+
+    }
+
     void Jump()
     {
         Vector2 jumpMovement = myRigidBody.velocity;
@@ -54,6 +61,7 @@ public class MainPlayerController : MonoBehaviour
         }
         myRigidBody.velocity = jumpMovement;
     }
+
     bool isGrounded()
     {
         Vector2 origin = transform.position;
