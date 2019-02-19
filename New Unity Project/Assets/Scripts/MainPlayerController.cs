@@ -12,6 +12,8 @@ public class MainPlayerController : MonoBehaviour
     public SpriteRenderer mySpriteRenderer;
     public LayerMask excludePlayer; 
     private Rigidbody2D myRigidBody;
+    private float jumpHeight;
+
 
        // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class MainPlayerController : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
         myAnimator = GetComponent<Animator>();
+        jumpHeight = (jumpSpeed * jumpSpeed) / myRigidBody.gravityScale;
     }
 
     // Update is called once per frame
