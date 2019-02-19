@@ -62,7 +62,7 @@ public class MainPlayerController : MonoBehaviour
         myRigidBody.velocity = jumpMovement;
     }
 
-    bool isGrounded()
+    public bool isGrounded()
     {
         Vector2 origin = transform.position;
         Vector2 direction = Vector2.down;
