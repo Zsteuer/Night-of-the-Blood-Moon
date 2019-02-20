@@ -44,6 +44,10 @@ public class MainPlayerController : MonoBehaviour
             FallCheck();
         }
         lastY = transform.position.y; // grabs the position of y for every frame
+      /*  if (IsGrounded() && !myAnimator.GetBool("IsFalling"))
+        {
+            Debug.Log("this might help");
+        } */
     }
 
     void Move()
@@ -114,7 +118,7 @@ public class MainPlayerController : MonoBehaviour
                 myAnimator.SetBool("IsFalling" , false);
             } */
             
-        if (transform.position.y < lastY)
+        if (transform.position.y < lastY || myRigidBody.velocity.y < 0)
         {
             myAnimator.SetBool("IsFalling", true);
             myAnimator.SetBool("IsJumping", false); // you can't be jumping and falling at the same time
@@ -153,7 +157,7 @@ public class MainPlayerController : MonoBehaviour
         }
         else
         {
-            Debug.Log("this does return false ocassionally");
+           // Debug.Log("this does return false ocassionally");
             return false;
         }
         
