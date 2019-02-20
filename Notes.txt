@@ -1,4 +1,4 @@
-Things to talk to Jason about:
+Things to talk about:
 - Player needs to be named player
 - Enemy needs its own layer
 
