@@ -39,6 +39,7 @@ public class MainPlayerController : MonoBehaviour
     void Move()
     {
         Vector2 movement = Vector2.zero;
+        movement.y = myRigidBody.velocity.y;
         myAnimator.SetFloat("Speed", 0); 
         if (Input.GetKey(KeyCode.A))
         {

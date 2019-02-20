@@ -42,9 +42,9 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            movement.y = 0;
+            movement.y = myRigidBody.velocity.y;
         }
-        if (movement.y == 0) // double cheks to see if we need to jump over something
+        if (movement.y == 0) // double checks to see if we need to jump over something
         {
             Vector2 bottomOfSprite = transform.position; // this was an attempt to look for collisions with something lower than the midpoint of our sprite, but it didn't work
             bottomOfSprite.x = bottomOfSprite.x - (boxCollider.bounds.size.y/2);
