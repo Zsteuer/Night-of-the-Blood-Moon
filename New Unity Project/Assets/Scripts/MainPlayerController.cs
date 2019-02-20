@@ -32,8 +32,8 @@ public class MainPlayerController : MonoBehaviour
         if (IsGrounded())
         {
             Jump();
-            myAnimator.SetBool("IsJumping", false);
-        }
+        //    myAnimator.SetBool("IsJumping", false);
+        } 
     }
 
     void Move()
@@ -56,6 +56,14 @@ public class MainPlayerController : MonoBehaviour
             mySpriteRenderer.flipX = false;
 
         }
+      /*  if (IsGrounded())
+        {
+            myAnimator.SetBool("IsJumping", false);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+
+            }
+        } */
         myRigidBody.velocity = movement;
         }
 
@@ -105,18 +113,26 @@ public class MainPlayerController : MonoBehaviour
             jumpMovement.y = jumpSpeed;
             myAnimator.SetBool("IsJumping", true); 
         }
+       /* else
+        {
+            myAnimator.SetBool("IsJumping", false);
+        } */
         myRigidBody.velocity = jumpMovement;
     }
 
     public bool IsGrounded()
     {
         Vector2 origin = transform.position;
-                      
+
         if (Physics2D.Linecast(origin, tagGround.position, excludePlayer))
         {
             return true;
-        } else
+        }
+        else
+        {
+            Debug.Log("this does return false ocassionally");
             return false;
+        }
         
     }
 }
