@@ -9,3 +9,6 @@ Today:
 Health pickup:
  - Increases Lives
  - Increases AttackSpeed
+
+Not important now, but worth watching when we add levels (only the first few minutes):
+https://www.youtube.com/watch?v=gKjKFZ30684
