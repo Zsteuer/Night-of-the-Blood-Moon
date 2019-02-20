@@ -1,6 +1,7 @@
 Things to talk about:
 - Player needs to be named player
 - Enemy needs its own layer
+- Player 1 is most recent player prefab, not player
 
 Today:
  - Get jump to work

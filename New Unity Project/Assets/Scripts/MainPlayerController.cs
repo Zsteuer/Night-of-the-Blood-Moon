@@ -13,11 +13,13 @@ public class MainPlayerController : MonoBehaviour
     public LayerMask excludePlayer;
     private Rigidbody2D myRigidBody;
     private float jumpHeight;
+    private float lastY;
 
 
        // Start is called before the first frame update
     void Start()
     {
+        lastY = transform.position.y; // grabs the y of the last frame
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
         myAnimator = GetComponent<Animator>();
@@ -28,12 +30,20 @@ public class MainPlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        FallCheck();
+      //  FallCheck();
         if (IsGrounded())
         {
+            myAnimator.SetBool("IsJumping", false); // jump might set this true if you successfully jump
+            myAnimator.SetBool("IsFalling", false); // you can't be falling if you're grounded
             Jump();
         //    myAnimator.SetBool("IsJumping", false);
-        } 
+        }
+        else
+        {
+            myAnimator.SetBool("IsFalling", false); // fall check might set this to true if you are falling
+            FallCheck();
+        }
+        lastY = transform.position.y; // grabs the position of y for every frame
     }
 
     void Move()
@@ -95,15 +105,27 @@ public class MainPlayerController : MonoBehaviour
         
     void FallCheck() // Work on this
     {
-        if (myRigidBody.velocity.y < -0.1)
+        /*    if (myRigidBody.velocity.y < -0.1)
+            {
+                myAnimator.SetBool("IsFalling" , true);
+            }
+            else
+            {
+                myAnimator.SetBool("IsFalling" , false);
+            } */
+            
+        if (transform.position.y < lastY)
         {
-            myAnimator.SetBool("IsFalling" , true);
+            myAnimator.SetBool("IsFalling", true);
+            myAnimator.SetBool("IsJumping", false); // you can't be jumping and falling at the same time
         }
         else
         {
-            myAnimator.SetBool("IsFalling" , false);
+            myAnimator.SetBool("IsFalling", false);
+          //  myAnimator.SetBool("IsJumping", true); // this is only called when you aren't grounded, so this should be right
         }
-    }
+     //   lastY = transform.position.y;
+    } 
 
     void Jump()
     {
@@ -114,7 +136,7 @@ public class MainPlayerController : MonoBehaviour
             jumpMovement.y = jumpSpeed;
             myAnimator.SetBool("IsJumping", true); 
         }
-       /* else
+    /*    else
         {
             myAnimator.SetBool("IsJumping", false);
         } */
