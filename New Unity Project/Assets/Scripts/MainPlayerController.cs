@@ -59,7 +59,7 @@ public class MainPlayerController : MonoBehaviour
         myRigidBody.velocity = movement;
         }
 
-    void SwordAttack()
+   /* void SwordAttack()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {
@@ -82,9 +82,9 @@ public class MainPlayerController : MonoBehaviour
             }
         }
     
-    }
+    } */
         
-    void FallCheck()
+    void FallCheck() // Work on this
     {
         if (myRigidBody.velocity.y < -0.1)
         {

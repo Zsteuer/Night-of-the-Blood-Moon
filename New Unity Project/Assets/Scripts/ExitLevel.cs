@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ExitLevel : MonoBehaviour
 {
+    int chancesToExit = 0;
     public String nextLevelSceneName;
     Transform playerTransform;
     // Start is called before the first frame update
@@ -19,8 +20,10 @@ public class ExitLevel : MonoBehaviour
     {
         float xDistance = Math.Abs(transform.position.x - playerTransform.position.x);
         float yDistance = Math.Abs(transform.position.y - playerTransform.position.y);
-        if (xDistance <= .2 && yDistance <= .1)
+        if (xDistance <= .2 && yDistance <= .4)
         {
+          //  Debug.Log("The player is close to the door " + chancesToExit);
+            chancesToExit++;
             if (Input.GetKeyDown(KeyCode.W))
             {
                 SceneManager.LoadScene(nextLevelSceneName);

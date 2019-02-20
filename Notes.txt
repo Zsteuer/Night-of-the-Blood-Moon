@@ -1,0 +1,10 @@
+Things to talk to Jason about:
+- Player needs to be named player
+- Enemy needs its own layer
+
+Today:
+ - Get jump to work
+ - Get jump better
+Health pickup:
+ - Increases Lives
+ - Increases AttackSpeed
