@@ -47,11 +47,12 @@ public class EnemyMovement : MonoBehaviour
         if (movement.y == 0) // double checks to see if we need to jump over something
         {
             Vector2 bottomOfSprite = transform.position; // this was an attempt to look for collisions with something lower than the midpoint of our sprite, but it didn't work
-            bottomOfSprite.x = bottomOfSprite.x - (boxCollider.bounds.size.y/2);
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, (float) 0.5, excludeEnemy);
+            bottomOfSprite.y = bottomOfSprite.y - (boxCollider.bounds.size.y/2) + (float) .01;
+            RaycastHit2D hit = Physics2D.Raycast(bottomOfSprite, Vector3.right, (float) 0.4, excludeEnemy);
+          //  Debug.Log(bottomOfSprite.y);
             if (movement.x < 0)
             {
-                hit = Physics2D.Raycast(transform.position, Vector3.left, (float)0.5, excludeEnemy);
+                hit = Physics2D.Raycast(transform.position, Vector3.left, (float)0.4, excludeEnemy);
             }
             if (hit.collider != null)
             {
