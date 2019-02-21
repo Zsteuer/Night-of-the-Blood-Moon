@@ -605,6 +605,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 142
       objectReference: {fileID: 0}
+    - target: {fileID: 1233428686, guid: 2c866250fa9e7b744be7d310aff23eb5, type: 3}
+      propertyPath: fastFallSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c866250fa9e7b744be7d310aff23eb5, type: 3}
 --- !u!1001 &2408925055317553697
