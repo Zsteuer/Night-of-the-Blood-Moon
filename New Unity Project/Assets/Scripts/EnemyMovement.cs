@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour
     private float myHeight;
     private float jumpDistance; // actually just the distance to the tallest point
     // Start is called before the first frame update
+    public float fastFallSpeed;
+    bool hasFastFalled;
     void Start()
     {
         playerPosition = GameObject.Find("Player").transform;
@@ -29,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
         playerDetected = true;
         jumpDistance = (jumpHeight / myRigidBody.gravityScale)*speed;
         myWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
+        hasFastFalled = false;
     }
 
     // Update is called once per frame
@@ -39,8 +42,19 @@ public class EnemyMovement : MonoBehaviour
             Vector3 currRot = transform.eulerAngles;
             currRot.y = 0; // fixes any rotations from before the player was detected
             transform.eulerAngles = currRot;
-            //   Debug.Log("test");
+            //   Debug.Log("test")
             Vector2 movement = Vector2.zero;
+          /*  if (isGrounded())
+            {
+                hasFastFalled = false;
+            }
+            else
+            {
+                if (playerPosition.position.y < transform.position.y - 5 && Math.Abs(playerPosition.position.x - transform.position.x) < 5)
+                {
+                    FastFall();
+                }
+            } */
             if (playerPosition.position.x - transform.position.x > 0)
             {
                 movement.x = speed;
@@ -118,6 +132,16 @@ public class EnemyMovement : MonoBehaviour
         else
             return false;
 
+    }
+    void FastFall()
+    {
+        if (!hasFastFalled)
+        {
+            Vector2 movement = myRigidBody.velocity;
+            hasFastFalled = true;
+            movement.y -= fastFallSpeed;
+            myRigidBody.velocity = movement;
+        }
     }
     /* Vector2 toVector2(this Vector3 vec3) // credit: https://www.devination.com/2015/07/unity-extension-method-tutorial.html
     {
