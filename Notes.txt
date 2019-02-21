@@ -2,13 +2,7 @@ Things to talk about:
 - Player needs to be named player
 - Enemy needs its own layer
 - Player 1 is most recent player prefab, not player
-
-Today:
- - Get jump to work
- - Get jump better
-Health pickup:
- - Increases Lives
- - Increases AttackSpeed
+- Obstacles need RigidBodies for the enemy to jump over them
 
 Not important now, but worth watching when we add levels (only the first few minutes):
 https://www.youtube.com/watch?v=gKjKFZ30684

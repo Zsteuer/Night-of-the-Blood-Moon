@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public LayerMask excludeEnemy;
+    public LayerMask excludeEnemyAndPlayer;
     Transform tagGround;
     private Rigidbody2D myRigidBody;
     private BoxCollider2D boxCollider;
@@ -38,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if (isGrounded() && (Math.Abs(playerPosition.position.x - transform.position.x) < 5) && playerPosition.position.y > transform.position.y && !GameObject.Find("Player").GetComponent<MainPlayerController>().IsGrounded()) 
         {
+          //  Debug.Log("this is what's happenening");
             movement.y = jumpSpeed;
         }
         else
@@ -58,11 +60,14 @@ public class EnemyMovement : MonoBehaviour
             {
                 GameObject collidedWith = hit.transform.gameObject;
                 float collidedWithHeight = collidedWith.GetComponent<Collider2D>().bounds.size.y;
-            //    Debug.Log("collidedWithHeight= " + collidedWithHeight);
-            //    Debug.Log("JumpHeight =" + jumpHeight);
-            //    Debug.Log("transform.position.y =" + transform.position.y);
-           //     Debug.Log("collidedWith.transform.position.y =" + collidedWith.transform.position.y);
-                if (transform.position.y + jumpHeight >= collidedWithHeight + collidedWith.transform.position.y && isGrounded())
+                //    Debug.Log("collidedWithHeight= " + collidedWithHeight);
+                //    Debug.Log("JumpHeight =" + jumpHeight);
+                //    Debug.Log("transform.position.y =" + transform.position.y);
+                //     Debug.Log("collidedWith.transform.position.y =" + collidedWith.transform.position.y);
+                Debug.Log("but we do go in here");
+                if (transform.position.y + jumpHeight >= collidedWithHeight + collidedWith.transform.position.y && isGrounded() // if we can jump over it 
+                  && !(collidedWith.layer == LayerMask.NameToLayer("Player") || (collidedWith.transform.parent != null &&  collidedWith.transform.parent.gameObject.layer == LayerMask.NameToLayer("Player")))
+                    ) // if it isn't the player or a child of the player
                 {
                    Debug.Log("we do go in here");
                     movement.y = jumpSpeed;
