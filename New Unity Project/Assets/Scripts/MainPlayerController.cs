@@ -82,31 +82,7 @@ public class MainPlayerController : MonoBehaviour
         myRigidBody.velocity = movement;
         }
 
-   /* void SwordAttack()
-    {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            if (mySpriteRenderer.flipX == true)
-            {
-                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left);
-                if (swordHit.collider != null)
-                {
-
-                }
-
-            }
-            else if (mySpriteRenderer.flipX == false)
-            {
-                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right);
-                if (swordHit.collider != null)
-                {
-
-                }
-            }
-        }
-    
-    } */
-        
+          
     void FallCheck() // Work on this
     {
         /*    if (myRigidBody.velocity.y < -0.1)
