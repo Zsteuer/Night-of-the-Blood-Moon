@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSwordAttack : EntityStats
+public class PlayerSwordAttack : PlayerStats
 {
     public SpriteRenderer mySpriteRenderer;
     public Animator myAnimator;
@@ -30,7 +30,7 @@ public class PlayerSwordAttack : EntityStats
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left);
                 if (swordHit.collider.tag == "Enemy")
                 {
-                    EntityStats.DamageDone(swordDamageDone);
+                    EnemyHealth.DamageDone(swordDamageDone);
                     myAnimator.SetTrigger("IsAttacking");
                 }
 
@@ -40,7 +40,7 @@ public class PlayerSwordAttack : EntityStats
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right);
                 if (swordHit.collider.tag == "Enemy")
                 {
-                    EntityStats.DamageDone(swordDamageDone);
+                    EnemyHealth.DamageDone(swordDamageDone);
                     myAnimator.SetTrigger("IsAttacking");
                 }
             }
