@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSwordAttack : EnemyMovement 
-    {
+public class PlayerSwordAttack : EntityStats
+{
     public SpriteRenderer mySpriteRenderer;
     public Animator myAnimator;
     public float swordDamageDone = 1.0f;
@@ -20,6 +20,7 @@ public class PlayerSwordAttack : EnemyMovement
     }
 
     void SwordAttack()
+        //need to constraint this method so that it can only be used intermittently, adjusted by agility stat 
     {
         myAnimator.ResetTrigger("IsAttacking");
         if (Input.GetKeyDown(KeyCode.J))
@@ -49,6 +50,6 @@ public class PlayerSwordAttack : EnemyMovement
 
     void DamageDone(int swordDamageDone)
     {
-        
+        // Strength multiplier should be added here alongside sword damage to collided entity 
     }
 }
