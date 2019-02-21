@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public LayerMask excludeEnemy;
-    public LayerMask excludeEnemyAndPlayer;
+    //public LayerMask excludeEnemyAndPlayer;
     Transform tagGround;
     private Rigidbody2D myRigidBody;
     private BoxCollider2D boxCollider;
