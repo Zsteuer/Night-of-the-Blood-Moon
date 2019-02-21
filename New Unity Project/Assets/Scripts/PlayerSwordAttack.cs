@@ -30,7 +30,7 @@ public class PlayerSwordAttack : EntityStats
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left);
                 if (swordHit.collider.tag == "Enemy")
                 {
-                    DamageDone(swordDamageDone);
+                    EntityStats.DamageDone(swordDamageDone);
                     myAnimator.SetTrigger("IsAttacking");
                 }
 
@@ -40,7 +40,7 @@ public class PlayerSwordAttack : EntityStats
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right);
                 if (swordHit.collider.tag == "Enemy")
                 {
-                    DamageDone(swordDamageDone);
+                    EntityStats.DamageDone(swordDamageDone);
                     myAnimator.SetTrigger("IsAttacking");
                 }
             }
@@ -48,8 +48,4 @@ public class PlayerSwordAttack : EntityStats
 
     }
 
-    void DamageDone(int swordDamageDone)
-    {
-        // Strength multiplier should be added here alongside sword damage to collided entity 
-    }
-}
+ }
