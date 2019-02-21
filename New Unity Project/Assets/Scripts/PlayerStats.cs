@@ -18,16 +18,16 @@ public class PlayerStats : MonoBehaviour
     
     void ChangeStrength(float amount)
     {
-        Strength = Strength + amount;
+        Strength += amount;
     }
 
     void ChangeAgility(float amount)
     {
-        Agility = Agility + amount;
+        Agility += amount;
     }
 
     void ChangeStamina(float amount)
     {
-        Stamina = Stamina + amount;
+        Stamina += amount;
     }
 }
