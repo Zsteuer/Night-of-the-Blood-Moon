@@ -609,6 +609,10 @@ PrefabInstance:
       propertyPath: fastFallSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1226418565, guid: 2c866250fa9e7b744be7d310aff23eb5, type: 3}
+      propertyPath: offset.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c866250fa9e7b744be7d310aff23eb5, type: 3}
 --- !u!1001 &2408925055317553697
