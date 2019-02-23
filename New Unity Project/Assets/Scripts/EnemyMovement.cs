@@ -22,7 +22,10 @@ public class EnemyMovement : MonoBehaviour
     public float fastFallSpeed;
     bool hasFastFalled;
     private float timer; // times the last time since the player was ahead
-    private float lastX;
+    private float lastVel;
+    private bool needsToEscape; // if the enemy needs to get out of the way
+    private float leftTimer;
+    private float rightTimer;
     void Start()
     {
         playerPosition = GameObject.Find("Player").transform;
@@ -35,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
         myWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
         hasFastFalled = false;
         timer = 0;
+        needsToEscape = false;
     }
 
     // Update is called once per frame
@@ -42,10 +46,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (playerDetected)
         {
-            if (isPlayerAhead()|| isPlayerBelow())
+            if (isPlayerAhead() || isPlayerBelow() || playerSuperClose()) // both of these detect if the player is in range. PlayerSuperClose should take care of collisions
             {
                 Vector2 attackMovement = myRigidBody.velocity;
                 attackMovement.x = 0; // we still want it to be able to fall, so we don't change y quite yet
+                                      //  attackMovement.y = 0; // we let it fast fall in front of the player
                 myRigidBody.velocity = attackMovement;
                 Attack();
             }
@@ -119,26 +124,50 @@ public class EnemyMovement : MonoBehaviour
                         //     }
                     }
                 }
-                if ((isPlayerDirectlyAbove() || isPlayerDirectlyBelow()) && movement.x == 0) // this teaches the enemy to get out of the way
+                /*    if ((isPlayerDirectlyAbove() || isPlayerDirectlyBelow()) && movement.x == 0) // this teaches the enemy to get out of the way
+                    {
+                        movement.x = speed;
+                    } */
+                if (isGrounded() && isPlayerDirectlyBelow()) // is he on top of the player?
                 {
-                    /*    if (playerPosition.position.x - transform.position.x > 0)
-                        {
-                            movement.x = speed;
-                        }
-                        else
-                        {
-                            movement.x = -speed;
-                        } */
-                    movement.x = speed;
+                    movement.y = jumpSpeed; // good that you got him to jump. Problem is that this updates frame by frame
                 }
-                myRigidBody.velocity = movement;
+                /*    if (Math.Abs(playerPosition.position.x - transform.position.x) < .5) // keeps the flickering animation thing from happening
+                    {
+                        movement.x = 0;
+                    } */
+                if (isPlayerDirectlyAbove() || isPlayerDirectlyBelow())
+                {
+                    needsToEscape = true;
+                }
+                if (needsToEscape)
+                {
+                    Debug.Log("needsToExcape");
+                    if (timer < .25)
+                    {
+                        Debug.Log("still taking time");
+                        movement.x = speed;
+                        timer += Time.deltaTime;
+                    }
+
+                    else
+                    {
+                        Debug.Log("checking to see if escaped");
+                        if (!(isPlayerDirectlyBelow() || isPlayerDirectlyAbove()))
+                        {
+                            needsToEscape = false;
+                            Debug.Log("sucessfully escaped");
+                        }
+                        timer = 0;
+                    }
+                }
+
+            myRigidBody.velocity = movement;
               
             }
-            timer += Time.deltaTime;
         }
         else // Code in this clause adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
         {
-            timer = 0;
             if (!noDitchNearby() || isBlocked())
             {
                 Vector3 currRot = transform.eulerAngles;
@@ -157,7 +186,6 @@ public class EnemyMovement : MonoBehaviour
         }
         if (isPlayerAhead())
         {
-            timer = 0;
             Debug.Log("Player is ahead");
             Debug.Log(myRigidBody.velocity.x);
         }
@@ -244,6 +272,32 @@ public class EnemyMovement : MonoBehaviour
         return false;
  //   }
 }
+    bool somethingOnYourRight() // not used
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, (float).01, excludeEnemy);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        return false;
+    }
+    bool somethingOnYourLeft() // not used
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.left, (float).01, excludeEnemy);
+        if (hit.collider != null)
+        {
+            return true;
+        }
+        return false;
+    }
+    bool playerSuperClose()
+    {
+        float yDistance = playerPosition.position.y - transform.position.y;
+        float xDistance = playerPosition.position.x - transform.position.x;
+        float square = xDistance * xDistance + yDistance * yDistance;
+        float sqrt = (float) Math.Sqrt(square);
+        return (sqrt < .75);
+    }
     //}
     void Attack()
     {
@@ -310,7 +364,7 @@ public class EnemyMovement : MonoBehaviour
    //     }
         myRigidBody.velocity = movement;
     } */
-    void OnCollisionEnter2D(Collision2D collision)
+  /*  void OnCollisionEnter2D(Collision2D collision)
     {
         Vector2 movement = myRigidBody.velocity;
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -318,5 +372,5 @@ public class EnemyMovement : MonoBehaviour
             movement.x = 0;
         }
         myRigidBody.velocity = movement;
-    }
+    } */
 }
