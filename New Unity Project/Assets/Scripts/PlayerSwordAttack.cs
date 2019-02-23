@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class PlayerSwordAttack : PlayerStats
 {
+    private float timer;
     public SpriteRenderer mySpriteRenderer;
     public Rigidbody2D myRigidBody;
     public Animator myAnimator;
     public LayerMask excludePlayer;
     public float swordDamageDone = 1.0f;
-    
+    public float attackLength;
+    private bool firstTime; // this keeps you from waiting the first time
+  //  AnimatorClipInfo[] CurrentClipInfo;
+    public bool isAttackingHere;
+
     // Start is called before the first frame update
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
+        timer = 0;
+        firstTime = true;
+      //  myAnimator = gameObject.GetComponent<Animator>();
+    //    CurrentClipInfo = this.myAnimator.GetCurrentAnimatorClipInfo(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         SwordAttack();
+        timer += Time.deltaTime;
+        //    if (CurrentClipInfo[0].clip.name;
+        isAttackingHere = myAnimator.GetCurrentAnimatorStateInfo(0).IsName("AttackCycle");
     }
 
     
     void SwordAttack()
         //need to constraint this method so that it can only be used intermittently, adjusted by agility stat 
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && (timer >= attackLength || firstTime))
         {
             if (mySpriteRenderer.flipX == true)
             {
@@ -46,6 +58,8 @@ public class PlayerSwordAttack : PlayerStats
                 }
                   myAnimator.SetTrigger("IsAttacking");
             }
+            timer = 0;
+            firstTime = false;
         }
                        
     }

@@ -1,8 +1,9 @@
 Things to talk about:
 - Player needs to be named player
 - Enemy needs its own layer
-- Player 1 is most recent player prefab, not player
+- Player 1 1 (NOT player 1) is most recent player prefab, not player
 - Obstacles need RigidBodies for the enemy to jump over them
+- Castlevania never has the player go above the camera, so y never has to move... Is that what we want?
 
 Not important now, but worth watching when we add levels (only the first few minutes):
 https://www.youtube.com/watch?v=gKjKFZ30684
