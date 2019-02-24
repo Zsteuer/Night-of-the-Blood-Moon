@@ -66,7 +66,7 @@ public class CameraControllerNew : MonoBehaviour
             }
             else if (player.position.y < transform.position.y - vertExtent)
             {
-                nextPos.y -= ((float)2.5)*Time.deltaTime * shiftAmount;
+                nextPos.y -= ((float)3)*Time.deltaTime * shiftAmount;
           //      nextPos = transform.position;
            //     nextPos.y += player.position.y - (transform.position.y - vertExtent + 1);
          //       transform.position = nextPos;
