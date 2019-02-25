@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
     Transform playerPosition;
     public Boolean playerDetected;
     public float speed;
@@ -26,8 +27,19 @@ public class EnemyMovement : MonoBehaviour
     private bool needsToEscape; // if the enemy needs to get out of the way
     private float leftTimer;
     private float rightTimer;
+    public Sprite defaultSprite;
+    public Sprite attackSprite;
+    public Sprite[] walkSprites;
+    private int leftMovementCounter = -1;
+    private int rightMovementCounter = -1;
+    private float movementTimer = 0; // used for motion. How long have we been walking in this direction?
+    private float attackTimer = 0; // How long we have been attacking.
+    public float attackTime; // How frequent we shoot raycasts during the attack
+    Boolean isAttacking; // set true in attack and false in update. Keeps us from adding the Time.deltaTime BEFORE attacking
     void Start()
     {
+        isAttacking = false;
+        spriteRenderer = GetComponent<SpriteRenderer>();
         playerPosition = GameObject.Find("Player").transform;
         tagGround = GameObject.Find(this.name + "/Ground").transform;
         myRigidBody = GetComponent<Rigidbody2D>();
@@ -48,6 +60,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if (isPlayerAhead() || isPlayerBelow() || playerSuperClose()) // both of these detect if the player is in range. PlayerSuperClose should take care of collisions
             {
+                movementTimer = 0;
                 Vector2 attackMovement = myRigidBody.velocity;
                 attackMovement.x = 0; // we still want it to be able to fall, so we don't change y quite yet
                                       //  attackMovement.y = 0; // we let it fast fall in front of the player
@@ -56,6 +69,9 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
+                isAttacking = false;
+                movementTimer += Time.deltaTime;
+                attackTimer = 0;
                 Vector3 currRot = transform.eulerAngles;
                 currRot.y = 0; // fixes any rotations from before the player was detected
                 transform.eulerAngles = currRot;
@@ -163,8 +179,44 @@ public class EnemyMovement : MonoBehaviour
                 }
 
             myRigidBody.velocity = movement;
-              
+                if (playerPosition.position.x > transform.position.x + .1) // taking care of direction
+                {
+                    spriteRenderer.flipX = false;
+                }
+                if (playerPosition.position.x < transform.position.x - .1)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                if (myRigidBody.velocity.x > 0 && (movementTimer >= .25 || rightMovementCounter == -1))
+                {
+                    movementTimer = 0;
+                    rightMovementCounter++;
+                    leftMovementCounter = -1;
+                    if (rightMovementCounter >= walkSprites.Length)
+                    {
+                        rightMovementCounter = 0;
+                    }
+                    spriteRenderer.sprite = walkSprites[rightMovementCounter];
+                }
+                if (myRigidBody.velocity.x < 0 && (movementTimer >= .25 || leftMovementCounter == -1))
+                {
+                    movementTimer = 0;
+                    leftMovementCounter++;
+                    rightMovementCounter = -1;
+                    if (leftMovementCounter >= walkSprites.Length)
+                    {
+                        leftMovementCounter = 0;
+                    }
+                    spriteRenderer.sprite = walkSprites[leftMovementCounter];
+                }
+                if (myRigidBody.velocity.x == 0)
+                {
+                    leftMovementCounter = -1;
+                    rightMovementCounter = -1;
+                    spriteRenderer.sprite = defaultSprite;
+                }
             }
+       
         }
         else // Code in this clause adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
         {
@@ -301,6 +353,34 @@ public class EnemyMovement : MonoBehaviour
     //}
     void Attack()
     {
+        spriteRenderer.sprite = attackSprite;
+        if (attackTimer > attackTime)
+        {
+            Debug.Log("Bang!");
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, (float)1, excludeEnemy);
+            if (playerPosition.position.x < transform.position.x - .01)
+            {
+                hit = Physics2D.Raycast(transform.position, Vector3.left, (float)1, excludeEnemy);
+            }
+            if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+                if (playerHealth.lives > 0)
+                {
+                    playerHealth.lives--;
+                }
+            }
+            attackTimer = 0;
+        }
+        else
+        {
+         //   Debug.Log("attackTimer = " + attackTimer + ". attackTime =" + attackTime + ".");
+        }
+        if (isAttacking)
+        {
+            attackTimer += Time.deltaTime;
+        }
+        isAttacking = true;
         Debug.Log("this is where the enemy would be attacking if we finished this part of the script");
     }
 

@@ -1,9 +1,17 @@
 Things to talk about:
 - Player needs to be named player
 - Enemy needs its own layer
-- Player 1 1 (NOT player 1) is most recent player prefab, not player
+- Player 2 (NOT player 1) is most recent player prefab, not player
+- Enemy 1 is most recent enemy
 - Obstacles need RigidBodies for the enemy to jump over them
-- Castlevania never has the player go above the camera, so y never has to move... Is that what we want?
+- Camera is now a prefab
+- Enemy shoots layers when attacking every AttackTime seconds at the player. Doesn't work with the hitbox.
+
+To talk about:
+- do we need the hitbox?
+- Should we merge playerStats with playerHealth or MainPlayerController? (I think we should, which is why I didn't code the other pickups)
+- The camera only moves in the y-coordinate when the player moves off the screen OR lands on a platform more than 75% of the way up or down.
+-- We will more than likely want to change how this works based on how the actual levels feel.
 
 Not important now, but worth watching when we add levels (only the first few minutes):
 https://www.youtube.com/watch?v=gKjKFZ30684
