@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : PlayerStats
 {
@@ -20,5 +21,9 @@ public class PlayerHealth : PlayerStats
     void Update()
     {
         myUIHealthPanel.SetLives(maxLives, lives);
+        if (lives == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
