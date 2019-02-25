@@ -23,11 +23,9 @@ SCRIPTS WE NEED TO TALK ABOUT 2/25:
  - EnemyHealth
 
 TODO:
-- Fix EnemyHealth
-- Add an animation when the enemy gets hit (just have it flash?)
-- Add an animation when the enemy dies
-- Delay RayCast of player
-- Add a Stamina pickup
-- Add a strength pickup
-- Axe agility pickup? I think we should
--- Too much speed makes the player hard to control
+- Fix EnemyHealth (DONE)
+- Add an animation when the enemy gets hit (just have it flash?) (done)
+- Add an animation when the enemy dies (done)
+- Delay RayCast of player (This actually feels oddly good. I'm not sure we need this.)
+- Add a Stamina pickup (DONE)
+- Add a strength pickup (DONE - extends playerStats)

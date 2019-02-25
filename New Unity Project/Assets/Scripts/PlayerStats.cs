@@ -6,7 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     
     public static float Strength = 25.0f;
-    public static float Agility = 1.0f;
+//    public static float Agility = 1.0f;
     public static float Stamina = 1.0f;  
 
 
@@ -17,17 +17,17 @@ public class PlayerStats : MonoBehaviour
     }
 
     
-    void ChangeStrength(float amount)
+   public static void ChangeStrength(float amount)
     {
          Strength += amount;
     }
 
-    void ChangeAgility(float amount)
+/*    void ChangeAgility(float amount)
     {
          Agility += amount;
-    }
+    } */
 
-    void ChangeStamina(float amount)
+   public static void ChangeStamina(float amount)
     {
           Stamina += amount;
     }

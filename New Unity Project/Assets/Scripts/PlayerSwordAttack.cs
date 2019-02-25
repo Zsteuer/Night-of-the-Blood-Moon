@@ -49,7 +49,10 @@ public class PlayerSwordAttack : PlayerStats
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
-                    EnemyHealth.DamageDone(swordDamageDone * Strength); // I changed this to pass in Strength
+                    //     EnemyHealth.DamageDone(swordDamageDone * Strength); // I changed this to pass in Strength
+                    GameObject target = swordHit.collider.gameObject;
+                    target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
+                //    GameObject.Find("Enemy").GetComponent<EnemyHealth>().DamageDone(swordDamageDone * Strength); // you need to change this line because it won't work for more than one enemy.
                 }
                 myAnimator.SetTrigger("IsAttacking");
             }
@@ -59,7 +62,10 @@ public class PlayerSwordAttack : PlayerStats
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
-                    EnemyHealth.DamageDone(swordDamageDone*Strength); // I changed this to pass in Strength
+                    GameObject target = swordHit.collider.gameObject;
+                    target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
+                    // EnemyHealth.DamageDone(swordDamageDone*Strength); // I changed this to pass in Strength
+                   // GameObject.Find("Enemy").GetComponent<EnemyHealth>().DamageDone(swordDamageDone * Strength); // you need to change this line because it won't work for more than one enemy.
                 }
                   myAnimator.SetTrigger("IsAttacking");
             }

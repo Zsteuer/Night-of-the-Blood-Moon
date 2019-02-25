@@ -20,7 +20,7 @@ public class MainPlayerController : PlayerStats
        // Start is called before the first frame update
     void Start()
     {
-        speed += Agility; // Do we want this?
+      //  speed += Agility; // Do we want this?
         lastY = transform.position.y; // grabs the y of the last frame
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
