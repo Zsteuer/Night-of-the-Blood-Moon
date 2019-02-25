@@ -38,14 +38,18 @@ public class PlayerSwordAttack : PlayerStats
     void SwordAttack()
         //need to constraint this method so that it can only be used intermittently, adjusted by agility stat 
     {
+        
         if (Input.GetKeyDown(KeyCode.J) && (timer >= attackLength || firstTime))
         {
+            Debug.Log("Strength = " + Strength);
+           // ChangeStrength(1);
             if (mySpriteRenderer.flipX == true)
             {
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left, 1.0f, excludePlayer);
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
-                    EnemyHealth.DamageDone(swordDamageDone);
+                    Debug.Log("We got him");
+                    EnemyHealth.DamageDone(swordDamageDone * Strength); // I changed this to pass in Strength
                 }
                 myAnimator.SetTrigger("IsAttacking");
             }
@@ -54,7 +58,8 @@ public class PlayerSwordAttack : PlayerStats
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right, 1.0f, excludePlayer);
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
-                    EnemyHealth.DamageDone(swordDamageDone);
+                    Debug.Log("We got him");
+                    EnemyHealth.DamageDone(swordDamageDone*Strength); // I changed this to pass in Strength
                 }
                   myAnimator.SetTrigger("IsAttacking");
             }
