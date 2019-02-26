@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class showText : MonoBehaviour
 {
-    public GameObject uiObject;
+    public GameObject TextPrompt;
+    public GameObject TextBackground;  
     // Start is called before the first frame update
     void Start()
     {
-        uiObject.SetActive(false);
+        TextPrompt.SetActive(false);
+        TextBackground.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D player)
     {
         if (player.gameObject.layer == 8)
         {
-            uiObject.SetActive(true);
+            TextBackground.SetActive(true);
+            TextPrompt.SetActive(true);
             StartCoroutine("Wait");
         }
     }
         IEnumerator Wait()
         {
             yield return new WaitForSeconds(5);
-            Destroy(uiObject);
+            Destroy(TextPrompt);
+            Destroy(TextBackground);
             Destroy(gameObject);
         }
     }
