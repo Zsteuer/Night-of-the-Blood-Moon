@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeartScript : MonoBehaviour
+public class StaminaIncrease : MonoBehaviour
 {
-    private bool isHit = false; // stops bump from when it detects the player twice
+    private bool isHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +20,22 @@ public class HeartScript : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("The heart is detecting the player");
+            Debug.Log("The stamina heart is detecting the player");
             PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
+            int curLives = playerHealth.lives;
+            if (playerHealth.maxLives < 6 && !isHit)
+            {
+                playerHealth.maxLives = playerHealth.maxLives + 1;
+            }
             if (playerHealth.lives < playerHealth.maxLives && !isHit)
             {
-                playerHealth.lives++;
+                playerHealth.lives = playerHealth.lives + 1; ;
                 Destroy(gameObject);
+            } 
+            if (curLives < 6) // if it did either of those things
+            {
                 isHit = true;
+                Destroy(gameObject);
             }
         }
     }
