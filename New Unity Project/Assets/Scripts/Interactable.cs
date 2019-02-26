@@ -18,7 +18,6 @@ public class Interactable : MonoBehaviour
         {
             uiObject.SetActive(true);
             StartCoroutine("Wait");
-            print("yep");
         }
     }
         IEnumerator Wait()
