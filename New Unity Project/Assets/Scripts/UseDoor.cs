@@ -3,10 +3,28 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
+
+
 public class UseDoor : MonoBehaviour
 {
-    public string nextLevelName;
-    private bool colliding = false;
+    public struct Parameters
+    {
+        public string nextLevelName;
+        public bool isColliding;
+
+        public void InputName(string levelName, bool collide)
+        {
+            nextLevelName = levelName;
+            isColliding = collide; 
+        }
+    }
+
+    Parameters para = new Parameters();
+    void Start()
+    {
+        para.isColliding = false;   
+    }
+
     void Update()
     {
     EnterDoor();
@@ -14,20 +32,19 @@ public class UseDoor : MonoBehaviour
 
     void EnterDoor()
     {
-    while (colliding)
-    {
-        if (Input.GetKeyDown(KeyCode.W)){
-            SceneManager.LoadScene(nextLevelName);
-        }
+    if (Input.GetKeyDown(KeyCode.W) && para.isColliding){
+            SceneManager.LoadScene(para.nextLevelName, LoadSceneMode.Single);
+           }
     }     
+    
+    private void OnCollisionEnter2D(Collision2D Player) 
+    {
+        para.isColliding = true;
     }
-    private void OnCollisionEnter2D(Collider2D Player) 
-    {
-        colliding = true;
-      }
 
-    private void OnCollisionExit2D(Collider2D Player)
+    private void OnCollisionExit2D(Collision2D Player)
     {
-        colliding = false;
+        para.isColliding = false;
     }
 }
+
