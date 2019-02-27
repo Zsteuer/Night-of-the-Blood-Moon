@@ -14,6 +14,9 @@ public class PlayerSwordAttack : PlayerStats
     private bool firstTime; // this keeps you from waiting the first time
   //  AnimatorClipInfo[] CurrentClipInfo;
     public bool isAttackingHere;
+    public AudioSource audioSource;
+    public AudioClip attackSound;
+    public AudioClip enemyHitClip;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +46,20 @@ public class PlayerSwordAttack : PlayerStats
         {
             Debug.Log("Strength = " + Strength);
            // ChangeStrength(1);
+           if (audioSource != null && attackSound != null)
+            {
+                audioSource.PlayOneShot(attackSound);
+            }
             if (mySpriteRenderer.flipX == true)
             {
                 RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left, 1.0f, excludePlayer);
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
+                    if (audioSource != null && enemyHitClip != null)
+                    {
+                        audioSource.PlayOneShot(enemyHitClip);
+                    } 
                     //     EnemyHealth.DamageDone(swordDamageDone * Strength); // I changed this to pass in Strength
                     GameObject target = swordHit.collider.gameObject;
                     target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
@@ -62,6 +73,10 @@ public class PlayerSwordAttack : PlayerStats
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
+                    if (audioSource != null && enemyHitClip != null)
+                    {
+                        audioSource.PlayOneShot(enemyHitClip);
+                    } 
                     GameObject target = swordHit.collider.gameObject;
                     target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
                     // EnemyHealth.DamageDone(swordDamageDone*Strength); // I changed this to pass in Strength

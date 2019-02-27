@@ -36,6 +36,8 @@ public class EnemyMovement : MonoBehaviour
     private float attackTimer = 0; // How long we have been attacking.
     public float attackTime; // How frequent we shoot raycasts during the attack
     Boolean isAttacking; // set true in attack and false in update. Keeps us from adding the Time.deltaTime BEFORE attacking
+    public AudioSource audioSource;
+    public AudioClip playerHitClip;
     void Start()
     {
         isAttacking = false;
@@ -364,6 +366,10 @@ public class EnemyMovement : MonoBehaviour
             }
             if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
+                if (audioSource != null && playerHitClip != null)
+                {
+                    audioSource.PlayOneShot(playerHitClip);
+                }
                 PlayerHealth playerHealth = GameObject.Find("Player").GetComponent<PlayerHealth>();
                 if (playerHealth.lives > 0)
                 {

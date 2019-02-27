@@ -5,6 +5,9 @@ using UnityEngine;
 public class StaminaIncrease : MonoBehaviour
 {
     private bool isHit = false;
+    public AudioSource audioSource;
+    public AudioClip itemPickup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +38,10 @@ public class StaminaIncrease : MonoBehaviour
             if (curLives < 6) // if it did either of those things
             {
                 isHit = true;
+                if (audioSource != null && itemPickup != null)
+                {
+                    audioSource.PlayOneShot(itemPickup);
+                }
                 Destroy(gameObject);
             }
         }

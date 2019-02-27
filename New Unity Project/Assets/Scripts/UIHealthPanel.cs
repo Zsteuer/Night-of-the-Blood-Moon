@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHealthPanel : MonoBehaviour
+public class UIHealthPanel : PlayerStats
 {
 	[SerializeField] Text healthText;
 	[SerializeField] Image[] hearts;
@@ -11,7 +11,7 @@ public class UIHealthPanel : MonoBehaviour
 
 	public void SetLives (int maxLives, int lives)
 	{
-		UpdateText (lives);
+		UpdateText (maxLives, lives);
 		UpdateHearts (lives);
 		UpdateSlider (maxLives, lives);
 	}
@@ -20,11 +20,11 @@ public class UIHealthPanel : MonoBehaviour
 	/// Updates the text simply by setting it to the number of lives.
 	/// </summary>
 	/// <param name="lives">Lives.</param>
-	void UpdateText(int lives){
+	void UpdateText(int maxLives, int lives){
 		if (healthText == null)
 			return;
 		string format = "D2"; // D2 means decimal format with a minimum of 2 digits, for one digit numbers this will give a preceding 0;
-		healthText.text = lives.ToString (format);
+		healthText.text = lives.ToString (format) + "/" + maxLives.ToString (format);
 	}
 
 	/// <summary>
@@ -47,11 +47,13 @@ public class UIHealthPanel : MonoBehaviour
 	/// </summary>
 	/// <param name="lives">Lives.</param>
 	void UpdateSlider(int maxLives, int lives){
-		if (healthSlider == null)
-			return;
-		float relativeScale = (float)lives / (float)maxLives;
-		Vector3 scale = healthSlider.transform.localScale;
-		scale.x = relativeScale;
-		healthSlider.transform.localScale = scale;
-	}
+        /*	if (healthSlider == null)
+                return;
+            float relativeScale = (float)lives / (float)maxLives;
+            Vector3 scale = healthSlider.transform.localScale;
+            scale.x = relativeScale;
+            healthSlider.transform.localScale = scale; */
+        GameObject.Find(this.name + "/HealthSlider").GetComponent<Text>().text = "Strength: " + Strength;
+
+    }
 }

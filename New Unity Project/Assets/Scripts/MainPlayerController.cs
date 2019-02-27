@@ -16,6 +16,10 @@ public class MainPlayerController : PlayerStats
     private float lastY;
     public float fastFallSpeed;
     bool hasFastFalled;
+    public AudioSource audioSource;
+    public AudioClip landSound;
+    public AudioClip jumpSound;
+    public AudioClip runSound;
     
        // Start is called before the first frame update
     void Start()
@@ -37,6 +41,13 @@ public class MainPlayerController : PlayerStats
         if (IsGrounded())
         {
             hasFastFalled = false;
+            if (myAnimator.GetBool("IsFalling"))
+            {
+                if (audioSource != null && landSound != null)
+                {
+                    audioSource.PlayOneShot(landSound);
+                }
+            }
             myAnimator.SetBool("IsJumping", false); // jump might set this true if you successfully jump
             myAnimator.SetBool("IsFalling", false); // you can't be falling if you're grounded
             Jump();
@@ -129,6 +140,10 @@ public class MainPlayerController : PlayerStats
             //jump
             jumpMovement.y = jumpSpeed;
             myAnimator.SetBool("IsJumping", true); 
+            if (audioSource != null && jumpSound != null)
+            {
+                audioSource.PlayOneShot(jumpSound);
+            }
         }
     /*    else
         {

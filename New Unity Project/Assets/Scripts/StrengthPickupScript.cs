@@ -6,6 +6,8 @@ public class StrengthPickupScript : PlayerStats
 {
     private bool isHit = false;
     public float amount;
+    public AudioSource audioSource;
+    public AudioClip itemPickup;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,10 @@ public class StrengthPickupScript : PlayerStats
         {
             Debug.Log("strengh = " + Strength);
             isHit = true;
+            if (audioSource != null && itemPickup != null)
+            {
+                audioSource.PlayOneShot(itemPickup);
+            }
             //  PlayerStats playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
             //  playerStats.ChangeStrength(amount);
             //GameObject.Find("Player").GetComponent<PlayerStats>().ChangeStrength(amount);
