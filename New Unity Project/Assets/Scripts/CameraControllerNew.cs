@@ -20,7 +20,12 @@ public class CameraControllerNew : MonoBehaviour
     public int maxX;
     private Camera camera;
     float vertExtent;
-    private float lastGroundedY;
+    public float lastGroundedY;
+    public float leftBound;
+    public float rightBound;
+    public float upBound;
+    public float downBound;
+    public bool isConstrained;
 
     
     void Start()
@@ -74,6 +79,27 @@ public class CameraControllerNew : MonoBehaviour
             }
             transform.position = nextPos;
         } 
+        if (isConstrained) // if the camera is constrained, we want it to fit within the edges
+        {
+            Vector3 corrected = transform.position;
+            if (corrected.x > rightBound)
+            {
+                corrected.x = rightBound;
+            }
+            if (corrected.x < leftBound)
+            {
+                corrected.x = leftBound;
+            }
+            if (corrected.y > upBound)
+            {
+                corrected.y = upBound;
+            }
+            if (corrected.y < downBound)
+            {
+                corrected.y = downBound;
+            }
+            transform.position = corrected;
+        }
     }
     void ShiftY(float y, float time) // will slowly shift to a new platform after being called. We'l call in Time*deltaTime to time
     {
