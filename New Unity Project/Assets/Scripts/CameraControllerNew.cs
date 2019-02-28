@@ -14,7 +14,7 @@ public class CameraControllerNew : MonoBehaviour
     public float thresholdDown; // Generally, this should be set to 1 or so since offsetY is a thing
     private float nextY; // when we have to shift up, we'll store the next Y here
     private bool isShifting; // are we shifting upward?
-    private float shiftAmount = 10; // when the player moves, the amount that the camera shifts with each second
+    private float shiftAmount = 20; // when the player moves, the amount that the camera shifts with each second
     private Camera camera;
     float vertExtent;
     public float lastGroundedY;
@@ -65,7 +65,7 @@ public class CameraControllerNew : MonoBehaviour
             }
             else if (player.position.y < transform.position.y - vertExtent)
             {
-                nextPos.y -= ((float)3)*Time.deltaTime * shiftAmount;
+                nextPos.y -= ((float)1.5)*Time.deltaTime * shiftAmount;
                
             }
             transform.position = nextPos;

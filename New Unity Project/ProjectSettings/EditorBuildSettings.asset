@@ -17,4 +17,16 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Levels/Final.unity
+    guid: 017b1fa2b6fc11d4f9bffbe274ff74c6
+  - enabled: 1
+    path: Assets/Scenes/Levels/FirstDungeon.unity
+    guid: 95325d2bbaab17043a5f39715770e4ba
+  - enabled: 1
+    path: Assets/Scenes/Levels/OutsideLevel.unity
+    guid: a14218b6ae0bc5c4e94d16eec8355ce8
+  - enabled: 1
+    path: Assets/Scenes/Levels/SecondDungeon.unity
+    guid: 3a57ae32e5607b7418a26a4365e22db3
   m_configObjects: {}
