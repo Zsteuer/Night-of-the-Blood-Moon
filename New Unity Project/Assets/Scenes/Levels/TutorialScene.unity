@@ -162,7 +162,7 @@ PrefabInstance:
     - target: {fileID: 8389248755949971007, guid: 6f8cdf64616674f4384325ba553285df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8389248755949971007, guid: 6f8cdf64616674f4384325ba553285df,
         type: 3}
@@ -517,6 +517,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7218208947379200982, guid: 58133e757792cd2499766403ff783e30,
+        type: 3}
+      propertyPath: enemyHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 28dec418a43f66f4084545469eda6e1a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58133e757792cd2499766403ff783e30, type: 3}
 --- !u!1 &158227281
@@ -911,7 +916,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 267320386}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1513,7 +1518,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 813836885}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1799,7 +1804,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 998662442}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2002,7 +2007,7 @@ GameObject:
   - component: {fileID: 1059809223}
   - component: {fileID: 1059809227}
   m_Layer: 8
-  m_Name: rpgItems_57
+  m_Name: Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2129,6 +2134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8241fafb2ad8c1439de9bbee0d32132, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playsTheSound: {fileID: 3644528125131876368, guid: 978e01f59b181244492a84684a8033f5,
+    type: 3}
 --- !u!1 &1098122383
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2320,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1374734558}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2458,7 +2465,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1488963196}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2985,7 +2992,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 2118696436}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 18181464f125d924cb74ae4019ee89da, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

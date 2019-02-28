@@ -38,6 +38,7 @@ public class StrengthPickupScript : PlayerStats
             Debug.Log("strengh = " + Strength);
             Destroy(gameObject);
         }
+      //  Destroy(gameObject);
 
     }
 }
