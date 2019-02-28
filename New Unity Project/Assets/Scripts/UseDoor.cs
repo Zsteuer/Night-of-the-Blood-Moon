@@ -6,7 +6,7 @@ using UnityEngine;
 public class UseDoor : MonoBehaviour
 {
     public string nextLevelName;
-    public bool isColliding;
+    public bool isColliding = false;
 
     void Start()
     {
@@ -25,14 +25,20 @@ public class UseDoor : MonoBehaviour
            }
     }     
     
-    private void OnTriggerEnter2D(Collider2D Player ) 
+    private void OnTriggerEnter2D(Collider2D Player) 
     {
-        isColliding = true;
+        if (Player.gameObject.tag == "Player")
+        {
+            isColliding = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D Player)
     {
-        isColliding = false;
+        if (Player.gameObject.tag == "Player")
+        {
+            isColliding = false;
+        }
     }
 }
 
