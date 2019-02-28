@@ -6,7 +6,6 @@ public class MainPlayerController : PlayerStats
 {
     public float speed;
     public float jumpSpeed;
-    public float isGroundedDistance;
     public Transform tagGround;
     public Animator myAnimator;
     public SpriteRenderer mySpriteRenderer;
@@ -24,7 +23,6 @@ public class MainPlayerController : PlayerStats
        // Start is called before the first frame update
     void Start()
     {
-      //  speed += Agility; // Do we want this?
         lastY = transform.position.y; // grabs the y of the last frame
         myRigidBody = GetComponent<Rigidbody2D>();
         tagGround = GameObject.Find(this.name + "/Ground").transform;
@@ -37,7 +35,6 @@ public class MainPlayerController : PlayerStats
     void Update()
     {
         Move();
-      //  FallCheck();
         if (IsGrounded())
         {
             hasFastFalled = false;
@@ -51,7 +48,6 @@ public class MainPlayerController : PlayerStats
             myAnimator.SetBool("IsJumping", false); // jump might set this true if you successfully jump
             myAnimator.SetBool("IsFalling", false); // you can't be falling if you're grounded
             Jump();
-        //    myAnimator.SetBool("IsJumping", false);
         }
         else
         {
@@ -60,10 +56,6 @@ public class MainPlayerController : PlayerStats
             FastFall();
         }
         lastY = transform.position.y; // grabs the position of y for every frame
-      /*  if (IsGrounded() && !myAnimator.GetBool("IsFalling"))
-        {
-            Debug.Log("this might help");
-        } */
     }
 
     void Move()
@@ -87,14 +79,6 @@ public class MainPlayerController : PlayerStats
             mySpriteRenderer.flipX = false;
 
         }
-      /*  if (IsGrounded())
-        {
-            myAnimator.SetBool("IsJumping", false);
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-
-            }
-        } */
         myRigidBody.velocity = movement;
         }
 
@@ -108,17 +92,8 @@ public class MainPlayerController : PlayerStats
             myRigidBody.velocity = movement;
         }
     }
-    void FallCheck() // Work on this
+    void FallCheck() 
     {
-        /*    if (myRigidBody.velocity.y < -0.1)
-            {
-                myAnimator.SetBool("IsFalling" , true);
-            }
-            else
-            {
-                myAnimator.SetBool("IsFalling" , false);
-            } */
-            
         if (transform.position.y < lastY || myRigidBody.velocity.y < 0)
         {
             myAnimator.SetBool("IsFalling", true);
@@ -127,9 +102,7 @@ public class MainPlayerController : PlayerStats
         else
         {
             myAnimator.SetBool("IsFalling", false);
-          //  myAnimator.SetBool("IsJumping", true); // this is only called when you aren't grounded, so this should be right
         }
-     //   lastY = transform.position.y;
     } 
 
     void Jump()
@@ -145,10 +118,6 @@ public class MainPlayerController : PlayerStats
                 audioSource.PlayOneShot(jumpSound);
             }
         }
-    /*    else
-        {
-            myAnimator.SetBool("IsJumping", false);
-        } */
         myRigidBody.velocity = jumpMovement;
     }
 

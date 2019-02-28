@@ -12,7 +12,6 @@ public class PlayerSwordAttack : PlayerStats
     public float swordDamageDone = 1.0f;
     public float attackLength;
     private bool firstTime; // this keeps you from waiting the first time
-  //  AnimatorClipInfo[] CurrentClipInfo;
     public bool isAttackingHere;
     public AudioSource audioSource;
     public AudioClip attackSound;
@@ -24,8 +23,6 @@ public class PlayerSwordAttack : PlayerStats
         myRigidBody = GetComponent<Rigidbody2D>();
         timer = 0;
         firstTime = true;
-      //  myAnimator = gameObject.GetComponent<Animator>();
-    //    CurrentClipInfo = this.myAnimator.GetCurrentAnimatorClipInfo(0);
     }
 
     // Update is called once per frame
@@ -33,19 +30,16 @@ public class PlayerSwordAttack : PlayerStats
     {
         SwordAttack();
         timer += Time.deltaTime;
-        //    if (CurrentClipInfo[0].clip.name;
         isAttackingHere = myAnimator.GetCurrentAnimatorStateInfo(0).IsName("AttackCycle");
     }
 
     
-    void SwordAttack()
-        //need to constraint this method so that it can only be used intermittently, adjusted by agility stat 
+    void SwordAttack() 
     {
         
         if (Input.GetKeyDown(KeyCode.J) && (timer >= attackLength || firstTime))
         {
             Debug.Log("Strength = " + Strength);
-           // ChangeStrength(1);
            if (audioSource != null && attackSound != null)
             {
                 audioSource.PlayOneShot(attackSound);
@@ -60,10 +54,8 @@ public class PlayerSwordAttack : PlayerStats
                     {
                         audioSource.PlayOneShot(enemyHitClip);
                     } 
-                    //     EnemyHealth.DamageDone(swordDamageDone * Strength); // I changed this to pass in Strength
                     GameObject target = swordHit.collider.gameObject;
                     target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
-                //    GameObject.Find("Enemy").GetComponent<EnemyHealth>().DamageDone(swordDamageDone * Strength); // you need to change this line because it won't work for more than one enemy.
                 }
                 myAnimator.SetTrigger("IsAttacking");
             }
@@ -79,8 +71,6 @@ public class PlayerSwordAttack : PlayerStats
                     } 
                     GameObject target = swordHit.collider.gameObject;
                     target.GetComponentInParent<EnemyHealth>().DamageDone(swordDamageDone * Strength);
-                    // EnemyHealth.DamageDone(swordDamageDone*Strength); // I changed this to pass in Strength
-                   // GameObject.Find("Enemy").GetComponent<EnemyHealth>().DamageDone(swordDamageDone * Strength); // you need to change this line because it won't work for more than one enemy.
                 }
                   myAnimator.SetTrigger("IsAttacking");
             }

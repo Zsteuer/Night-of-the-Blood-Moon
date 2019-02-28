@@ -29,9 +29,6 @@ public class StrengthPickupScript : PlayerStats
             {
                 audioSource.PlayOneShot(itemPickup);
             }
-            //  PlayerStats playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
-            //  playerStats.ChangeStrength(amount);
-            //GameObject.Find("Player").GetComponent<PlayerStats>().ChangeStrength(amount);
             ChangeStrength(amount);
             Debug.Log("strengh = " + Strength);
             Destroy(gameObject);

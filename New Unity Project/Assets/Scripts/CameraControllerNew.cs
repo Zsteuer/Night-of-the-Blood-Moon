@@ -15,9 +15,6 @@ public class CameraControllerNew : MonoBehaviour
     private float nextY; // when we have to shift up, we'll store the next Y here
     private bool isShifting; // are we shifting upward?
     private float shiftAmount = 10; // when the player moves, the amount that the camera shifts with each second
-   //  private float outOfBoundsShiftAmount = 20;
-    public int minX;
-    public int maxX;
     private Camera camera;
     float vertExtent;
     public float lastGroundedY;
@@ -43,7 +40,6 @@ public class CameraControllerNew : MonoBehaviour
         transform.position = nextPos;
         if (playerObject.GetComponent<MainPlayerController>().IsGrounded())
         {
-          //  lastGroundedY = player.position.y + offset.y;
             if (player.position.y > transform.position.y + vertExtent*thresholdUp)
             {
                 isShifting = true;
@@ -66,15 +62,10 @@ public class CameraControllerNew : MonoBehaviour
             if (player.position.y > transform.position.y + vertExtent)
             {
                 nextPos.y += Time.deltaTime * shiftAmount;
-                //nextPos.y += player.position.y - (transform.position.y + vertExtent - 1);
-            //    transform.position = nextPos;
             }
             else if (player.position.y < transform.position.y - vertExtent)
             {
                 nextPos.y -= ((float)3)*Time.deltaTime * shiftAmount;
-          //      nextPos = transform.position;
-           //     nextPos.y += player.position.y - (transform.position.y - vertExtent + 1);
-         //       transform.position = nextPos;
                
             }
             transform.position = nextPos;

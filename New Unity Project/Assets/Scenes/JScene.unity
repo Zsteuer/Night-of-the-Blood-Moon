@@ -1425,7 +1425,7 @@ PrefabInstance:
     - target: {fileID: 1372551050469104111, guid: ecf34f598f0822749a00157804930aad,
         type: 3}
       propertyPath: nextLevelSceneName
-      value: JScene
+      value: FirstDungeonScene
       objectReference: {fileID: 0}
     - target: {fileID: 543891441, guid: ecf34f598f0822749a00157804930aad, type: 3}
       propertyPath: nextLevelSceneName

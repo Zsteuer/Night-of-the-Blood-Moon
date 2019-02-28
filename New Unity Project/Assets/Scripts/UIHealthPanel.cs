@@ -13,7 +13,7 @@ public class UIHealthPanel : PlayerStats
 	{
 		UpdateText (maxLives, lives);
 		UpdateHearts (lives);
-		UpdateSlider (maxLives, lives);
+		UpdateStrength();
 	}
 
 	/// <summary>
@@ -43,16 +43,10 @@ public class UIHealthPanel : PlayerStats
 	}
 
 	/// <summary>
-	/// Updates the slider using its x-scale.
+	/// Updates strength
 	/// </summary>
 	/// <param name="lives">Lives.</param>
-	void UpdateSlider(int maxLives, int lives){
-        /*	if (healthSlider == null)
-                return;
-            float relativeScale = (float)lives / (float)maxLives;
-            Vector3 scale = healthSlider.transform.localScale;
-            scale.x = relativeScale;
-            healthSlider.transform.localScale = scale; */
+	void UpdateStrength(){
         GameObject.Find(this.name + "/HealthSlider").GetComponent<Text>().text = "Strength: " + Strength;
 
     }

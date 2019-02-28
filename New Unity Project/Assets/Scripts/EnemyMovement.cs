@@ -11,22 +11,15 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public float jumpSpeed;
     public LayerMask excludeEnemy;
-    //public LayerMask excludeEnemyAndPlayer;
     Transform tagGround;
     private Rigidbody2D myRigidBody;
     private BoxCollider2D boxCollider;
     private float jumpHeight;
-    private float myWidth;
     private float myHeight;
-    private float jumpDistance; // actually just the distance to the tallest point
-    // Start is called before the first frame update
     public float fastFallSpeed;
     bool hasFastFalled;
     private float timer; // times the last time since the player was ahead
-    private float lastVel;
     private bool needsToEscape; // if the enemy needs to get out of the way
-    private float leftTimer;
-    private float rightTimer;
     public Sprite defaultSprite;
     public Sprite attackSprite;
     public Sprite[] walkSprites;
@@ -48,8 +41,6 @@ public class EnemyMovement : MonoBehaviour
         jumpHeight = (jumpSpeed * jumpSpeed) / 2*myRigidBody.gravityScale;
         boxCollider = GetComponent<BoxCollider2D>();
         playerDetected = true;
-        jumpDistance = (jumpHeight / myRigidBody.gravityScale)*speed;
-        myWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
         hasFastFalled = false;
         timer = 0;
         needsToEscape = false;
@@ -65,7 +56,6 @@ public class EnemyMovement : MonoBehaviour
                 movementTimer = 0;
                 Vector2 attackMovement = myRigidBody.velocity;
                 attackMovement.x = 0; // we still want it to be able to fall, so we don't change y quite yet
-                                      //  attackMovement.y = 0; // we let it fast fall in front of the player
                 myRigidBody.velocity = attackMovement;
                 Attack();
             }
@@ -80,17 +70,6 @@ public class EnemyMovement : MonoBehaviour
                 //   Debug.Log("test")
                 Vector2 movement = Vector2.zero;
                 float previousX = myRigidBody.velocity.x; // We'll use this to help the enemy get out of the way if he's right above or below the villain
-                /*  if (isGrounded())
-                  {
-                      hasFastFalled = false;
-                  }
-                  else
-                  {
-                      if (playerPosition.position.y < transform.position.y - 5 && Math.Abs(playerPosition.position.x - transform.position.x) < 5)
-                      {
-                          FastFall();
-                      }
-                  } */
                 if (playerPosition.position.x - transform.position.x > 0)
                 {
                     movement.x = speed;
@@ -136,24 +115,12 @@ public class EnemyMovement : MonoBehaviour
                             Debug.Log("we do go in here");
                             movement.y = jumpSpeed;
                         }
-                        //   else
-                        //    {
-                        //         movement.y = 0;
-                        //     }
                     }
                 }
-                /*    if ((isPlayerDirectlyAbove() || isPlayerDirectlyBelow()) && movement.x == 0) // this teaches the enemy to get out of the way
-                    {
-                        movement.x = speed;
-                    } */
                 if (isGrounded() && isPlayerDirectlyBelow()) // is he on top of the player?
                 {
                     movement.y = jumpSpeed; // good that you got him to jump. Problem is that this updates frame by frame
                 }
-                /*    if (Math.Abs(playerPosition.position.x - transform.position.x) < .5) // keeps the flickering animation thing from happening
-                    {
-                        movement.x = 0;
-                    } */
                 if (isPlayerDirectlyAbove() || isPlayerDirectlyBelow())
                 {
                     needsToEscape = true;
@@ -297,7 +264,6 @@ public class EnemyMovement : MonoBehaviour
         {
            hit = Physics2D.Raycast(transform.position, Vector3.left, (float)1, excludeEnemy);
         }
-      //  RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, (float)100, excludeEnemy); // arbitrarily large number
         if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             //    Debug.Log("Player is below");
@@ -324,26 +290,8 @@ public class EnemyMovement : MonoBehaviour
             return true;
         }
         return false;
- //   }
 }
-    bool somethingOnYourRight() // not used
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, (float).01, excludeEnemy);
-        if (hit.collider != null)
-        {
-            return true;
-        }
-        return false;
-    }
-    bool somethingOnYourLeft() // not used
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.left, (float).01, excludeEnemy);
-        if (hit.collider != null)
-        {
-            return true;
-        }
-        return false;
-    }
+
     bool playerSuperClose()
     {
         float yDistance = playerPosition.position.y - transform.position.y;
@@ -390,19 +338,10 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("this is where the enemy would be attacking if we finished this part of the script");
     }
 
-    /* Vector2 toVector2(this Vector3 vec3) // credit: https://www.devination.com/2015/07/unity-extension-method-tutorial.html
-    {
-        return new Vector2(vec3.x, vec3.y);
-    } */
     bool noDitchNearby() // adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
     {
-       // Vector2 bottomOfSprite = transform.position; // this was an attempt to look for collisions with something lower than the midpoint of our sprite, but it didn't work
-     //   bottomOfSprite.y = bottomOfSprite.y - (boxCollider.bounds.size.y / 2) + (float).01;
         Vector2 lineCastPos = transform.position;
         lineCastPos.x += transform.right.x * (float) .1;
-     //  lineCastPos.x = transform.position.x - transform.right.x * myWidth + Vector2.up.x * myHeight;
-     //  lineCastPos.y = transform.position.y - transform.right.y * myWidth + Vector2.up.y * myHeight;
-      //  Vector2 lineCastPos = transform.position - transform.right.toVector2() * myWidth + Vector2.up * myHeight;
         if (Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, excludeEnemy)){
             return true;
         }
@@ -411,14 +350,8 @@ public class EnemyMovement : MonoBehaviour
     }
     bool isBlocked() // adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
     {
-        Vector2 bottomOfSprite = transform.position; // this was an attempt to look for collisions with something lower than the midpoint of our sprite, but it didn't work
+        Vector2 bottomOfSprite = transform.position; 
         bottomOfSprite.y = bottomOfSprite.y - (boxCollider.bounds.size.y / 2) + (float).01;
-        // Vector2 lineCastPos = Vector2.zero;
-        //lineCastPos.x = transform.position.x - transform.right.x * myWidth + Vector2.up.x * myHeight;
-        // lineCastPos.y = transform.position.y - transform.right.y * myWidth + Vector2.up.y * myHeight;
-        // Vector2 dir = lineCastPos;
-        // dir.x = dir.x - transform.right.x*.1f;
-        //  dir.y = dir.y - transform.right.y*.1f;
         Vector2 dir = bottomOfSprite;
         dir.x = bottomOfSprite.x + transform.right.x * (float).5;
         if (Physics2D.Linecast(bottomOfSprite, dir, excludeEnemy))
@@ -428,35 +361,4 @@ public class EnemyMovement : MonoBehaviour
         }
             return false;
     }
-   /* void OnCollisionEnter2D(Collision2D collision)
-    {
-        Vector2 movement = Vector2.zero;
-        myRigidBody.velocity = movement;
-        Debug.Log("bingo");
-        GameObject collidedWith = collision.gameObject;
-        float collidedWithHeight = collidedWith.GetComponent<Collider2D>().bounds.size.y;
-        Debug.Log("collidedWithHeight= " + collidedWithHeight);
-        Debug.Log("JumpHeight =" + jumpHeight);
-        Debug.Log("transform.position.y =" + transform.position.y);
-        Debug.Log("collidedWith.transform.position.y =" + collidedWith.transform.position.y);
-        if (transform.position.y + jumpHeight >= collidedWithHeight + collidedWith.transform.position.y && isGrounded())
-        {
-            Debug.Log("we do go in here");
-            movement.y = jumpSpeed;
-        }
-     //   else
-    //    {
-   //         movement.y = 0;
-   //     }
-        myRigidBody.velocity = movement;
-    } */
-  /*  void OnCollisionEnter2D(Collision2D collision)
-    {
-        Vector2 movement = myRigidBody.velocity;
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            movement.x = 0;
-        }
-        myRigidBody.velocity = movement;
-    } */
 }

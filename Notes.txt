@@ -29,3 +29,8 @@ TODO:
 - Delay RayCast of player (This actually feels oddly good. I'm not sure we need this.)
 - Add a Stamina pickup (DONE)
 - Add a strength pickup (DONE - extends playerStats)
+
+NOTES FOR 2/28:
+- We need to take care of the badly named canvas children.
+- Leo wants our sprites to be bigger. I think that might fuck up our levels
+- There's a camera glitch in the first dungeon that I want to talk to you about before I fix it
