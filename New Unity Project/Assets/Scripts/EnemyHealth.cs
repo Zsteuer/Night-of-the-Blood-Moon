@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemyHealth == 0) // destroys the enemy when he dies
+        if (enemyHealth <= 0) // destroys the enemy when he dies
         {
             StartCoroutine(Die());
         }

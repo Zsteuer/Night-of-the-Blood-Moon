@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   itemPickup: {fileID: 8300000, guid: 4804e886e1b3cca46a8c4fa7c8165a25, type: 3}
+  playsTheSound: {fileID: 3644528125131876368, guid: 978e01f59b181244492a84684a8033f5,
+    type: 3}
 --- !u!61 &251569747
 BoxCollider2D:
   m_ObjectHideFlags: 0

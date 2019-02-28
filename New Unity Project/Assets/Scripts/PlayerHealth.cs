@@ -21,7 +21,7 @@ public class PlayerHealth : PlayerStats
     void Update()
     {
         myUIHealthPanel.SetLives(maxLives, lives);
-        if (lives == 0)
+        if (lives <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

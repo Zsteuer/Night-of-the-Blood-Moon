@@ -5,9 +5,9 @@ using UnityEngine;
 public class StaminaIncrease : MonoBehaviour
 {
     private bool isHit = false;
-    public AudioSource audioSource;
-    public AudioClip itemPickup;
-
+    //public AudioSource audioSource;
+    // public AudioClip itemPickup;
+    public GameObject playsTheSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +38,13 @@ public class StaminaIncrease : MonoBehaviour
             if (curLives < 6) // if it did either of those things
             {
                 isHit = true;
-                if (audioSource != null && itemPickup != null)
+                /*    if (audioSource != null && itemPickup != null)
+                    {
+                        audioSource.PlayOneShot(itemPickup);
+                    } */
+                if (playsTheSound != null)
                 {
-                    audioSource.PlayOneShot(itemPickup);
+                    Instantiate(playsTheSound, transform.position, Quaternion.identity);
                 }
                 Destroy(gameObject);
             }

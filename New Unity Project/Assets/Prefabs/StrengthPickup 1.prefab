@@ -142,5 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 25
-  audioSource: {fileID: 0}
-  itemPickup: {fileID: 8300000, guid: 4804e886e1b3cca46a8c4fa7c8165a25, type: 3}
+  playsTheSound: {fileID: 1862881553}

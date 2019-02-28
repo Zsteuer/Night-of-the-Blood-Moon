@@ -6,8 +6,9 @@ public class HeartScript : MonoBehaviour
 {
     private bool isHit = false; // stops bump from when it detects the player twice
     // Start is called before the first frame update
-    public AudioSource audioSource;
-    public AudioClip itemPickup;
+   // public AudioSource audioSource;
+   // public AudioClip itemPickup;
+    public GameObject playsTheSound;
     void Start()
     {
         
@@ -27,9 +28,13 @@ public class HeartScript : MonoBehaviour
             if (playerHealth.lives < playerHealth.maxLives && !isHit)
             {
                 playerHealth.lives++;
-                if (audioSource != null && itemPickup != null)
+                /*    if (audioSource != null && itemPickup != null)
+                    {
+                        audioSource.PlayOneShot(itemPickup);
+                    } */
+                if (playsTheSound != null)
                 {
-                    audioSource.PlayOneShot(itemPickup);
+                    Instantiate(playsTheSound, transform.position, Quaternion.identity);
                 }
                 Destroy(gameObject);
                 isHit = true;

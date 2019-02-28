@@ -1217,6 +1217,12 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 415465403}
+    - target: {fileID: 1498558235085060758, guid: 438840a0a8ca7814a91e5f5b43f037b4,
+        type: 3}
+      propertyPath: playsTheSound
+      value: 
+      objectReference: {fileID: 3644528125131876368, guid: 978e01f59b181244492a84684a8033f5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438840a0a8ca7814a91e5f5b43f037b4, type: 3}
 --- !u!1 &415465402 stripped
@@ -1689,7 +1695,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015204132, y: -0.15996464}
+  m_Offset: {x: 0.015204132, y: -0.16094188}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1700,7 +1706,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29728127, y: 0.44321337}
+  m_Size: {x: 0.29728127, y: 0.44125888}
   m_EdgeRadius: 0
 --- !u!212 &464322133
 SpriteRenderer:
@@ -2022,6 +2028,12 @@ PrefabInstance:
       propertyPath: itemPickup
       value: 
       objectReference: {fileID: 8300000, guid: 4804e886e1b3cca46a8c4fa7c8165a25, type: 3}
+    - target: {fileID: 3858898760396937854, guid: 8836c924b876bb04a9f1e1cd3dbeb2b1,
+        type: 3}
+      propertyPath: playsTheSound
+      value: 
+      objectReference: {fileID: 3644528125131876368, guid: 978e01f59b181244492a84684a8033f5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8836c924b876bb04a9f1e1cd3dbeb2b1, type: 3}
 --- !u!1 &591234634
@@ -3743,6 +3755,12 @@ PrefabInstance:
       propertyPath: itemPickup
       value: 
       objectReference: {fileID: 8300000, guid: 4804e886e1b3cca46a8c4fa7c8165a25, type: 3}
+    - target: {fileID: 8280374927844225560, guid: 07745b98111ecfc4cb15503bbe99aab1,
+        type: 3}
+      propertyPath: playsTheSound
+      value: 
+      objectReference: {fileID: 3644528125131876368, guid: 978e01f59b181244492a84684a8033f5,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07745b98111ecfc4cb15503bbe99aab1, type: 3}
 --- !u!1 &1208314416 stripped
