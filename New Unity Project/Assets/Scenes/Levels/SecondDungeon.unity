@@ -951,6 +951,31 @@ PrefabInstance:
       propertyPath: playerObject
       value: 
       objectReference: {fileID: 1234295509}
+    - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
+        type: 3}
+      propertyPath: rightBound
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
+        type: 3}
+      propertyPath: leftBound
+      value: -29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
+        type: 3}
+      propertyPath: upBound
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
+        type: 3}
+      propertyPath: downBound
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
+        type: 3}
+      propertyPath: isConstrained
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72a07b4772d6e1b43afe7a81dca37ef3, type: 3}
 --- !u!1 &780283867
