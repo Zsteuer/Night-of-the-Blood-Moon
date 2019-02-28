@@ -20,7 +20,7 @@ public class LockedDoor : MonoBehaviour
 
     void CheckDoor()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isColliding)
+        if (Input.GetKeyDown(KeyCode.W) && isColliding && KeyChain.TutorialKey == false)
         {
             print("sowwy");
         }
