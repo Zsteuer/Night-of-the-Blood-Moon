@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MoveTextScript : MonoBehaviour
 {
+    public GameObject textBackground;
     // Start is called before the first frame update
     void Start()
     {
-        
+        textBackground.SetActive(true);
     }
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class MoveTextScript : MonoBehaviour
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             Destroy(gameObject);
+            Destroy(textBackground);
         }
     }
 }

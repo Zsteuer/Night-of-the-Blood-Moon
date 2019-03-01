@@ -4695,12 +4695,12 @@ PrefabInstance:
     - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
         type: 3}
       propertyPath: leftBound
-      value: -49
+      value: -53.5
       objectReference: {fileID: 0}
     - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
         type: 3}
       propertyPath: rightBound
-      value: 18.9
+      value: 23.753
       objectReference: {fileID: 0}
     - target: {fileID: 3379340778605168425, guid: 72a07b4772d6e1b43afe7a81dca37ef3,
         type: 3}

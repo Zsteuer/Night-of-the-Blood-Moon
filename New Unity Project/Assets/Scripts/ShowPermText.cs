@@ -25,7 +25,7 @@ public class ShowPermText : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
       //  Destroy(TextPrompt);
        // Destroy(TextBackground);
         Destroy(gameObject);

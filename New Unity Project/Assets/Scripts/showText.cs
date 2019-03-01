@@ -25,7 +25,7 @@ public class showText : MonoBehaviour
     }
         IEnumerator Wait()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             Destroy(TextPrompt);
             TextBackground.SetActive(false);
             Destroy(gameObject);

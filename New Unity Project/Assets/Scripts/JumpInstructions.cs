@@ -32,12 +32,13 @@ public class JumpInstructions : MonoBehaviour
         if (hasHitSpace && hasHitJump && timer >= 6)
         {
             txt.text = "Tip: you can press S to fall faster in air";
+            destroyThis();
         }
         timer += Time.deltaTime;
     }
     IEnumerator destroyThis()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
