@@ -241,6 +241,85 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 28dec418a43f66f4084545469eda6e1a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 939cd8fc575d98d4cb7db0121aaa0e52, type: 3}
+--- !u!1 &60384354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60384355}
+  - component: {fileID: 60384357}
+  - component: {fileID: 60384356}
+  m_Layer: 5
+  m_Name: DoorLocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &60384355
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60384354}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 72853901}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 205.8, y: 18}
+  m_SizeDelta: {x: 908.4, y: 294.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &60384356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60384354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
+    m_FontSize: 90
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 90
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'That door is locked! '
+--- !u!222 &60384357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60384354}
+  m_CullTransparentMesh: 0
 --- !u!224 &72853901 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5777562594457083761, guid: 2bfdeb1794aa6934b8e4a847e23bde6d,
@@ -3570,7 +3649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1227776807
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3893,7 +3972,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1276534995}
   - component: {fileID: 1276534994}
-  - component: {fileID: 1276534993}
   - component: {fileID: 1276534996}
   - component: {fileID: 1276534992}
   m_Layer: 0
@@ -3924,20 +4002,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1276534993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276534991}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542b4eb1ed9c220418041fada858dbed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nextLevelName: FirstDungeon
-  isColliding: 0
 --- !u!114 &1276534994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3952,6 +4016,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isColliding: 0
   UseDoor: {fileID: 1227776806}
+  TextPrompt: {fileID: 60384354}
+  TextBackground: {fileID: 2027825476}
 --- !u!4 &1276534995
 Transform:
   m_ObjectHideFlags: 0

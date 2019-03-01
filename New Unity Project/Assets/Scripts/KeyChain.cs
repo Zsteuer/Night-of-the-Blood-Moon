@@ -5,10 +5,12 @@ using UnityEngine;
 public class KeyChain : MonoBehaviour
 {
     public static bool TutorialKey;
+    public static bool SecondDungeonKey;
     // Start is called before the first frame update
     void Start()
     {
-        TutorialKey = false; 
+        TutorialKey = false;
+        SecondDungeonKey = false;
     }
 
     // Update is called once per frame
@@ -20,5 +22,6 @@ public class KeyChain : MonoBehaviour
     public static void TutorialKeyPickUp()
     {
         TutorialKey = true;
+        SecondDungeonKey = true;
     }
 }

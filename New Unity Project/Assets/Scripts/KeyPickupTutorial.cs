@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyPickup : MonoBehaviour
+public class KeyPickupTutorial : MonoBehaviour
 {
     public GameObject playsTheSound;
     private void OnTriggerEnter2D(Collider2D collision)

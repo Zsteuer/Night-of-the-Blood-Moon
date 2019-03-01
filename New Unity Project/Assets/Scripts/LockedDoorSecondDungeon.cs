@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LockedDoor : MonoBehaviour
+public class LockedDoorSecondDungeon : MonoBehaviour
 {
     public bool isColliding;
     public GameObject UseDoor;
+    public GameObject TextPrompt;
+    public GameObject TextBackground;
     // Start is called before the first frame update
     void Start()
     {
         UseDoor.SetActive(false);
+        TextPrompt.SetActive(false);
+        TextBackground.SetActive(false);
     }
 
     // Update is called once per frame
@@ -20,12 +24,15 @@ public class LockedDoor : MonoBehaviour
 
     void CheckDoor()
     {
-        if (Input.GetKeyDown(KeyCode.W) && isColliding && KeyChain.TutorialKey == false)
+        if (Input.GetKeyDown(KeyCode.W) && isColliding && KeyChain.SecondDungeonKey == false)
         {
-            print("sowwy");
+            TextBackground.SetActive(true);
+            TextPrompt.SetActive(true);
+            StartCoroutine("Wait");
         }
 
-        if((Input.GetKeyDown(KeyCode.W) && isColliding) && KeyChain.TutorialKey == true){
+        if ((Input.GetKeyDown(KeyCode.W) && isColliding) && KeyChain.SecondDungeonKey == true)
+        {
             UseDoor.SetActive(true);
         }
     }
@@ -44,5 +51,12 @@ public class LockedDoor : MonoBehaviour
         {
             isColliding = false;
         }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5);
+        TextPrompt.SetActive(false);
+        TextBackground.SetActive(false);
     }
 }
