@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     private float spriteBrinkingTotalTimer = 0.0f;
     private float spriteBlinkingTotalDuration = 0.5f;
     public bool isBlinking = false;
+    public static bool tutorialEnemyKilled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator Die()
     {
         yield return new WaitForSeconds(0);
+        tutorialEnemyKilled = true;
         Instantiate(theExplosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
