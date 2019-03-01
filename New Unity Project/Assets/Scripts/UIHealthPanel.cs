@@ -7,13 +7,13 @@ public class UIHealthPanel : PlayerStats
 {
 	[SerializeField] Text healthText;
 	[SerializeField] Image[] hearts;
-	[SerializeField] RectTransform healthSlider;
+	
 
 	public void SetLives (int maxLives, int lives)
 	{
 		UpdateText (maxLives, lives);
 		UpdateHearts (lives);
-		UpdateStrength();
+		//UpdateStrength();
 	}
 
 	/// <summary>
@@ -46,8 +46,8 @@ public class UIHealthPanel : PlayerStats
 	/// Updates strength
 	/// </summary>
 	/// <param name="lives">Lives.</param>
-	void UpdateStrength(){
-        GameObject.Find(this.name + "/HealthSlider").GetComponent<Text>().text = "Strength: " + Strength;
+	//void UpdateStrength(){
+      //  GameObject.Find(this.name + "/HealthSlider").GetComponent<Text>().text = "Strength: " + Strength;
 
-    }
+    //}
 }
