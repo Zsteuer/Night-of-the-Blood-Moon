@@ -1094,6 +1094,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   enemyHealth: 100
   theExplosion: {fileID: 6560301842004619907, guid: dbc4356959b9d3b43b36300dc6c9aaa7,
     type: 3}
@@ -1127,6 +1137,16 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfd17889fb749634f8753f4c01b9ed43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
   m_Name: 
@@ -2514,6 +2534,7 @@ GameObject:
   - component: {fileID: 1267971435}
   - component: {fileID: 1267971437}
   - component: {fileID: 1267971436}
+  - component: {fileID: 1267971438}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2582,6 +2603,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267971434}
   m_CullTransparentMesh: 0
+--- !u!114 &1267971438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267971434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db438a9fe3affd3429af6292574b4da0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1374734558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3584,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2073581273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88b45f7d8a413664e92bd147f967e2c1, type: 3}
+  m_Script: {fileID: 11500000, guid: ca6c0322785860641b2bc7a619fea0c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TextPrompt: {fileID: 1267971434}
