@@ -14,12 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/TutorialScene.unity
     guid: c8eff25821a878e42ad37bcd47304eee
+  - enabled: 1
+    path: Assets/Scenes/Levels/FirstDungeon.unity
+    guid: 95325d2bbaab17043a5f39715770e4ba
+  - enabled: 1
+    path: Assets/Scenes/Levels/VictoryScene.unity
+    guid: 95d4d2dd041a7274383f0f04db9f25b6
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Levels/FirstDungeon.unity
-    guid: 9f00f785a3ec9d748a35ad44b05aece8
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/OutsideLevel.unity
     guid: a14218b6ae0bc5c4e94d16eec8355ce8
