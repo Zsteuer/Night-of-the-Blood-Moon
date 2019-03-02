@@ -1209,6 +1209,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 826173498892105190, guid: 2bfdeb1794aa6934b8e4a847e23bde6d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bfdeb1794aa6934b8e4a847e23bde6d, type: 3}
 --- !u!224 &222237699 stripped
@@ -5340,8 +5345,8 @@ PolygonCollider2D:
       - {x: 0.36499998, y: -0.34}
       - {x: 0.35597265, y: -0.00045233965}
       - {x: 0.20158958, y: 0.009975731}
-      - {x: 0.19356668, y: 0.6525219}
-      - {x: -0.20221114, y: 0.65252197}
+      - {x: 0.1592319, y: 0.33597174}
+      - {x: -0.18695104, y: 0.32834408}
       - {x: -0.18647087, y: 0.034244105}
       - {x: -0.365, y: 0.028840587}
 --- !u!212 &2118696438

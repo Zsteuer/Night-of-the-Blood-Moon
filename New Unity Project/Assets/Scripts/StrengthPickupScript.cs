@@ -4,42 +4,29 @@ using UnityEngine;
 
 public class StrengthPickupScript : PlayerStats
 {
-    private bool isHit = false;
     public float amount;
     // public AudioSource audioSource;
     // public AudioClip itemPickup;
-    public GameObject playsTheSound;
-    // Start is called before the first frame update
+    public AudioSource playClip;
+    bool playSound;
+    bool toggleChange;
+
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        playClip = GetComponent<AudioSource>();
+        playSound = false;
 
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") && !isHit)
+        if ((collision.gameObject.tag == "Player") && playSound == false)
         {
-            Debug.Log("strengh = " + Strength);
-            isHit = true;
-            /*  if (audioSource != null && itemPickup != null)
-              {
-                  audioSource.PlayOneShot(itemPickup);
-              }*/
-            if (playsTheSound != null)
-            {
-                Instantiate(playsTheSound, transform.position, Quaternion.identity);
-            }
+            playSound = true;
+            playClip.Play();                 
             ChangeStrength(amount);
-            Debug.Log("strengh = " + Strength);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+            
         }
-      //  Destroy(gameObject);
-
     }
 }
 
