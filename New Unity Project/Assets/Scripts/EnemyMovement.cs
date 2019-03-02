@@ -67,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
                 Vector3 currRot = transform.eulerAngles;
                 currRot.y = 0; // fixes any rotations from before the player was detected
                 transform.eulerAngles = currRot;
-                //   Debug.Log("test")
+             
                 Vector2 movement = Vector2.zero;
                 float previousX = myRigidBody.velocity.x; // We'll use this to help the enemy get out of the way if he's right above or below the villain
                 if (playerPosition.position.x - transform.position.x > 0)
@@ -76,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 if (playerPosition.position.x - transform.position.x < 0)
                 {
-                    Debug.Log("you're still getting in here somehow");
+                  
                     movement.x = -speed;
                 }
                 if (isGrounded() && (Math.Abs(playerPosition.position.x - transform.position.x) < 5) && playerPosition.position.y > transform.position.y && !GameObject.Find("Player").GetComponent<MainPlayerController>().IsGrounded())
@@ -107,12 +107,12 @@ public class EnemyMovement : MonoBehaviour
                         //    Debug.Log("JumpHeight =" + jumpHeight);
                         //    Debug.Log("transform.position.y =" + transform.position.y);
                         //     Debug.Log("collidedWith.transform.position.y =" + collidedWith.transform.position.y);
-                        Debug.Log("but we do go in here");
+                   
                         if (transform.position.y + jumpHeight >= collidedWithHeight + collidedWith.transform.position.y && isGrounded() // if we can jump over it 
                           && !(collidedWith.layer == LayerMask.NameToLayer("Player") || (collidedWith.transform.parent != null && collidedWith.transform.parent.gameObject.layer == LayerMask.NameToLayer("Player")))
                             ) // if it isn't the player or a child of the player
                         {
-                            Debug.Log("we do go in here");
+                      
                             movement.y = jumpSpeed;
                         }
                     }
@@ -127,21 +127,21 @@ public class EnemyMovement : MonoBehaviour
                 }
                 if (needsToEscape)
                 {
-                    Debug.Log("needsToExcape");
+                  
                     if (timer < .25)
                     {
-                        Debug.Log("still taking time");
+                       
                         movement.x = speed;
                         timer += Time.deltaTime;
                     }
 
                     else
                     {
-                        Debug.Log("checking to see if escaped");
+                        
                         if (!(isPlayerDirectlyBelow() || isPlayerDirectlyAbove()))
                         {
                             needsToEscape = false;
-                            Debug.Log("sucessfully escaped");
+                           
                         }
                         timer = 0;
                     }
@@ -201,19 +201,7 @@ public class EnemyMovement : MonoBehaviour
             myVel.x = transform.right.x * speed;
             myRigidBody.velocity = myVel; 
         }
-        if (isPlayerBelow())
-        {
-            Debug.Log("Player is below");
-        }
-        if (isPlayerAhead())
-        {
-            Debug.Log("Player is ahead");
-            Debug.Log(myRigidBody.velocity.x);
-        }
-        else
-        {
-            Debug.Log("Player is not ahead");
-        }
+
     }
     bool isGrounded()
     {
@@ -251,7 +239,7 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(ahead, Vector3.down, (float)100, excludeEnemy); // arbitrarily large number
         if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-        //    Debug.Log("Player is below");
+       
             return true;
         }
         return false;
@@ -266,7 +254,7 @@ public class EnemyMovement : MonoBehaviour
         }
         if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            //    Debug.Log("Player is below");
+         
             return true;
         }
         return false;
@@ -276,7 +264,7 @@ public class EnemyMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.down, (float)100, excludeEnemy);
         if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-                Debug.Log("Player is directly");
+               
             return true;
         }
         return false;
@@ -306,7 +294,7 @@ public class EnemyMovement : MonoBehaviour
         spriteRenderer.sprite = attackSprite;
         if (attackTimer > attackTime)
         {
-            Debug.Log("Bang!");
+            
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector3.right, (float)1, excludeEnemy);
             if (playerPosition.position.x < transform.position.x - .01)
             {
@@ -335,7 +323,7 @@ public class EnemyMovement : MonoBehaviour
             attackTimer += Time.deltaTime;
         }
         isAttacking = true;
-        Debug.Log("this is where the enemy would be attacking if we finished this part of the script");
+       
     }
 
     bool noDitchNearby() // adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
@@ -345,7 +333,7 @@ public class EnemyMovement : MonoBehaviour
         if (Physics2D.Linecast(lineCastPos, lineCastPos + Vector2.down, excludeEnemy)){
             return true;
         }
-        Debug.Log("There's a ditch");
+        
         return false;
     }
     bool isBlocked() // adopted from https://www.devination.com/2015/07/unity-2d-platformer-tutorial-part-4.html
@@ -357,7 +345,7 @@ public class EnemyMovement : MonoBehaviour
         if (Physics2D.Linecast(bottomOfSprite, dir, excludeEnemy))
         {
             return true;
-            Debug.Log("he's blocked");
+          
         }
             return false;
     }
