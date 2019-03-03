@@ -104,6 +104,36 @@ CapsuleCollider2D:
   m_Offset: {x: 0.018019557, y: 0.16891229}
   m_Size: {x: 0.11798668, y: 0.30178547}
   m_Direction: 0
+--- !u!1 &677128882164399146
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8745197251936664168}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8745197251936664168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677128882164399146}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.131, y: -0.000000004967054, z: 0}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7218208947379200971}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7218208947379200978
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,13 +147,13 @@ GameObject:
   - component: {fileID: 7218208947379200986}
   - component: {fileID: 7218208947379200985}
   - component: {fileID: 7218208947379200984}
-  - component: {fileID: 7218208947379200983}
   - component: {fileID: 7218208947379200982}
+  - component: {fileID: 7115742972967127281}
   - component: {fileID: 7218208947379200981}
   - component: {fileID: 7218208947379200980}
   - component: {fileID: 7218208947379200979}
   m_Layer: 8
-  m_Name: Player 5
+  m_Name: AlternatePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +172,7 @@ Transform:
   m_Children:
   - {fileID: 161489839}
   - {fileID: 1315259407}
+  - {fileID: 8745197251936664168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -247,7 +278,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpSpeed: 30
-  isGroundedDistance: 0
   tagGround: {fileID: 161489839}
   myAnimator: {fileID: 7218208947379200985}
   mySpriteRenderer: {fileID: 7218208947379200987}
@@ -259,30 +289,6 @@ MonoBehaviour:
   landSound: {fileID: 8300000, guid: 696ab2a28668797458bdc9cc33423c7f, type: 3}
   jumpSound: {fileID: 8300000, guid: 9894fad71c755984a9e705e5c9172764, type: 3}
   runSound: {fileID: 0}
---- !u!114 &7218208947379200983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7218208947379200978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363a0d3a7a3e7354390c76c86e8a3388, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mySpriteRenderer: {fileID: 7218208947379200987}
-  myRigidBody: {fileID: 0}
-  myAnimator: {fileID: 7218208947379200985}
-  excludePlayer:
-    serializedVersion: 2
-    m_Bits: 1591
-  swordDamageDone: 1
-  attackLength: 0.75
-  isAttackingHere: 0
-  audioSource: {fileID: 7218208947379200979}
-  attackSound: {fileID: 8300000, guid: 56cf7574df289bf428d36ec308bb394a, type: 3}
-  enemyHitClip: {fileID: 8300000, guid: 28dec418a43f66f4084545469eda6e1a, type: 3}
 --- !u!61 &7218208947379200982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -309,6 +315,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19, y: 0.3}
   m_EdgeRadius: 0
+--- !u!114 &7115742972967127281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7218208947379200978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8c583bf1a905142968fc0163815c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwAttack: 0.3
+  myAnimator: {fileID: 0}
+  attackPos: {fileID: 8745197251936664168}
+  attackRange: 0.43
+  whatIsEnemies:
+    serializedVersion: 2
+    m_Bits: 1024
+  damage: 20
 --- !u!114 &7218208947379200981
 MonoBehaviour:
   m_ObjectHideFlags: 0

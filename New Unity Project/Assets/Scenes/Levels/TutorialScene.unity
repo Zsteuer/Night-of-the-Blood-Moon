@@ -1666,50 +1666,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!1 &437585559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 147899949, guid: d4b332c89b3d7af42ba27ba044a09f0d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1650086700}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &437585560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437585559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eedeb7ebac09c154ebb00a9469411ec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &437585568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437585559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bfa8638e1a85494c9b312fa7f92dfb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherSprite: {fileID: 21300388, guid: 5d3439a3ffa2d784197d55d5be4b4364, type: 3}
-  thisSprite: {fileID: 21300386, guid: 5d3439a3ffa2d784197d55d5be4b4364, type: 3}
---- !u!114 &437585570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437585559}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfd17889fb749634f8753f4c01b9ed43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &560108862
 GameObject:
   m_ObjectHideFlags: 0
@@ -4070,7 +4026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 147899956, guid: d4b332c89b3d7af42ba27ba044a09f0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.456
+      value: -2.72
       objectReference: {fileID: 0}
     - target: {fileID: 147899956, guid: d4b332c89b3d7af42ba27ba044a09f0d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4141,6 +4097,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 147899951, guid: d4b332c89b3d7af42ba27ba044a09f0d, type: 3}
+      propertyPath: myAnimator
+      value: 
+      objectReference: {fileID: 1650086701}
     - target: {fileID: 147899957, guid: d4b332c89b3d7af42ba27ba044a09f0d, type: 3}
       propertyPath: MinDistance
       value: 0.95085335
@@ -4149,8 +4109,19 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7182179531187313115, guid: d4b332c89b3d7af42ba27ba044a09f0d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a9fc154d2f064554f88e824c87790ea8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4b332c89b3d7af42ba27ba044a09f0d, type: 3}
+--- !u!95 &1650086701 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7182179531187313115, guid: d4b332c89b3d7af42ba27ba044a09f0d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1650086700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1672494697
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,7 +5003,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
-  theExplosion: {fileID: 0}
   isBlinking: 0
   textBackground: {fileID: 2038322977}
 --- !u!1 &2038322977

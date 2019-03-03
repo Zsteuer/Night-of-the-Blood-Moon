@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
       public float enemyHealth;
-      public GameObject theExplosion;
+     
     private float spriteBlinkingFrameTimer = 0.0f; // https://answers.unity.com/questions/1134985/sprite-blinking-effect-when-player-hit.html
     private float spriteBlinkingFrameDuration = 0.1f;
     private float spriteBrinkingTotalTimer = 0.0f;
@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(0);
         tutorialEnemyKilled = true;
-        Instantiate(theExplosion, transform.position, Quaternion.identity);
+        
         Destroy(gameObject);
     }
     private void SpriteBlink()

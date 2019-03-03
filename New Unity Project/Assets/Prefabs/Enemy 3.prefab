@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 873281375
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 31c32a8ba9e3fd741949562a7c70ed11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,18 +120,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0006567016, y: 0.0000030994415}
+  m_Offset: {x: 0.005021803, y: 0.00094911456}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.29, y: 0.4}
+    oldSize: {x: 0.18, y: 0.32}
     newSize: {x: 0.19, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29340822, y: 0.40005434}
+  m_Size: {x: 0.17983739, y: 0.326267}
   m_EdgeRadius: 0
 --- !u!114 &147899951
 MonoBehaviour:
@@ -152,21 +152,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 823
   fastFallSpeed: 0
-  defaultSprite: {fileID: 21300000, guid: 31c32a8ba9e3fd741949562a7c70ed11, type: 3}
-  attackSprite: {fileID: 21300004, guid: dc1ea9e7ce629b54c8214ba4bd47dbf0, type: 3}
+  defaultSprite: {fileID: 21300000, guid: a8ef52d6a77bcd749976de37f861cad8, type: 3}
+  attackSprite: {fileID: 21300014, guid: a8ef52d6a77bcd749976de37f861cad8, type: 3}
   walkSprites:
-  - {fileID: 21300000, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300002, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300004, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300006, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300008, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300010, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300012, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300014, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300016, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300018, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300020, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
-  - {fileID: 21300022, guid: 5b9d97904a185c542bcbafe7be73afd4, type: 3}
+  - {fileID: 21300000, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300002, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300004, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300006, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300008, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300010, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300012, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300014, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300016, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300018, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300020, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300022, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
+  - {fileID: 21300024, guid: 2e7fa24468f02594484183cb9d7ee88d, type: 3}
   attackTime: 1
   audioSource: {fileID: 147899957}
   playerHitClip: {fileID: 8300000, guid: 80437df04016e684a86d330cdcbc7602, type: 3}
@@ -279,8 +280,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 100
-  theExplosion: {fileID: 6560301842004619907, guid: dbc4356959b9d3b43b36300dc6c9aaa7,
-    type: 3}
   isBlinking: 0
 --- !u!95 &7182179531187313115
 Animator:

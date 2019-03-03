@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public Animator myAnimator;
     private SpriteRenderer spriteRenderer;
     Transform playerPosition;
     public Boolean playerDetected;
@@ -291,6 +292,7 @@ public class EnemyMovement : MonoBehaviour
     //}
     void Attack()
     {
+        myAnimator.SetTrigger("isAttacking");
         spriteRenderer.sprite = attackSprite;
         if (attackTimer > attackTime)
         {
@@ -299,6 +301,7 @@ public class EnemyMovement : MonoBehaviour
             if (playerPosition.position.x < transform.position.x - .01)
             {
                 hit = Physics2D.Raycast(transform.position, Vector3.left, (float)1, excludeEnemy);
+                
             }
             if (hit.collider != null && hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
             {

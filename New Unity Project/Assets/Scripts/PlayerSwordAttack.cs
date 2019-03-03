@@ -46,7 +46,7 @@ public class PlayerSwordAttack : PlayerStats
             }
             if (mySpriteRenderer.flipX == true)
             {
-                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left, 1.0f, excludePlayer);
+                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.left, 2.0f, excludePlayer);
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
@@ -61,7 +61,7 @@ public class PlayerSwordAttack : PlayerStats
             }
             else if (mySpriteRenderer.flipX == false)
             {
-                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right, 1.0f, excludePlayer);
+                RaycastHit2D swordHit = Physics2D.Raycast(transform.position, Vector2.right, 2.0f, excludePlayer);
                 if (swordHit.collider != null && swordHit.collider.tag == "Enemy")
                 {
                     Debug.Log("We got him");
