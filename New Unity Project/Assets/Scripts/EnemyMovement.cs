@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     private float timer; // times the last time since the player was ahead
     private bool needsToEscape; // if the enemy needs to get out of the way
     public Sprite defaultSprite;
-    public Sprite attackSprite;
+    public Sprite[] attackSprite;
     public Sprite[] walkSprites;
     private int leftMovementCounter = -1;
     private int rightMovementCounter = -1;
