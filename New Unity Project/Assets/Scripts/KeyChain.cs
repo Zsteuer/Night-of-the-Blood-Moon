@@ -22,6 +22,10 @@ public class KeyChain : MonoBehaviour
     public static void TutorialKeyPickUp()
     {
         TutorialKey = true;
-        SecondDungeonKey = true;
+       
+    }
+    public static void SecondDungeonKeyPickUp()
+    {
+        SecondDungeonKey = true; 
     }
 }
