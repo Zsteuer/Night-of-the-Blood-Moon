@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 147899951}
   - component: {fileID: 147899957}
   - component: {fileID: 147899950}
+  - component: {fileID: 7182179531187313115}
   m_Layer: 10
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -281,6 +282,25 @@ MonoBehaviour:
   theExplosion: {fileID: 6560301842004619907, guid: dbc4356959b9d3b43b36300dc6c9aaa7,
     type: 3}
   isBlinking: 0
+--- !u!95 &7182179531187313115
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147899949}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 169d92e6bf5a2ae4f8dc543c3f3f51ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &614597401
 GameObject:
   m_ObjectHideFlags: 0
