@@ -2614,6 +2614,11 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 1930816652}
+    - target: {fileID: 826173498892105190, guid: 2bfdeb1794aa6934b8e4a847e23bde6d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bfdeb1794aa6934b8e4a847e23bde6d, type: 3}
 --- !u!1 &943021653
@@ -3541,6 +3546,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 19112045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1211677920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211677918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93ff14d9295651449096b795487e547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &1211677928
 AudioSource:
   m_ObjectHideFlags: 0

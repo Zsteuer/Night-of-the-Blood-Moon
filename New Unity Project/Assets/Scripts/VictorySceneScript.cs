@@ -16,7 +16,16 @@ public class VictorySceneScript : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            resetStaticVars();
             SceneManager.LoadScene("Start", LoadSceneMode.Single);
         }
+    }
+    void resetStaticVars()
+    {
+        EnemyHealth.tutorialEnemyKilled = false;
+        KeyChain.TutorialKey = false;
+        KeyChain.SecondDungeonKey = false;
+        PlayerStats.Strength = 25f;
+        DoorsEntered.foundDoor = false;
     }
 }
